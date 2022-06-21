@@ -95,6 +95,7 @@ char	*ft_strndup(char *src, int len);
 int		ft_strlen_c(char *str, char c);
 long	ft_atol(const char *str);
 int		ft_isdigit_str(char *str);
+char	*skip_whitespaces(char *str);
 
 /* ************** ft_printf ************ */
 int		ft_printf(const char *format, ...);

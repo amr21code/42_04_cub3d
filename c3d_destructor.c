@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_init.c                                         :+:      :+:    :+:   */
+/*   c3d_destructor.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 16:11:05 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/21 16:23:26 by anruland         ###   ########.fr       */
+/*   Created: 2022/06/21 16:50:26 by anruland          #+#    #+#             */
+/*   Updated: 2022/06/21 16:51:10 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	c3d_init_preerr(t_preerr *check)
+/**
+ * destroys one single pointer
+ * @param str [void *] pointer to free
+ */
+void	c3d_single_desctruct(void *str)
 {
-		check->no = 0;
-		check->ea = 0;
-		check->so = 0;
-		check->we = 0;
-		check->door = 0;
-		check->f = 0;
-		check->c = 0;
+	if (str)
+		free(str);
+	str = NULL;
 }

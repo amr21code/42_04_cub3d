@@ -6,7 +6,7 @@
 #    By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/20 15:14:15 by anruland          #+#    #+#              #
-#    Updated: 2022/06/20 15:52:25 by anruland         ###   ########.fr        #
+#    Updated: 2022/06/21 16:57:35 by anruland         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,11 @@ MLIBS	=	-L./libft/ -lft -lm -lmlx -framework OpenGL -framework AppKit
 
 OS		= $(shell uname)
 
-SRC		=	main.c
+SRC		=	main.c \
+			c3d_init.c \
+			c3d_error_checks.c \
+			c3d_error_checks_helper.c \
+			c3d_destructor.c
 
 
 # Mac or Linux?

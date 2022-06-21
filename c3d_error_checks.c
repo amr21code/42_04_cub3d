@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:35:11 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/21 16:10:58 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/21 17:00:32 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,21 @@ void	c3d_check_config_elem(char *path)
 	int			fd;
 	char		*rd;
 	t_preerr	check;
-	int			i;
 
-	i = 0;
 	rd = NULL;
 	c3d_init_preerr(&check);
 	fd = open(path, O_RDONLY);
 	rd = get_next_line(fd);
 	while (rd)
 	{
-		if (ft_strlen(rd) > 1)
+		if (!c3d_check_config_elem_line(rd, &check, fd))
 		{
-			while (rd[i])
-			{
-				if (ft_strchr("NSWEDFC", rd[i]))
-					c3d_count_config_elem(&check, rd[i]);
-				i++;
-			}
+			c3d_single_desctruct(rd);
+			break ;
 		}
-		free(rd);
+		c3d_single_desctruct(rd);
 		rd = get_next_line(fd);
 	}
+	close(fd);
 	c3d_errors_config_elem(check);
 }

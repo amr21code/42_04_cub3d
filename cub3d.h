@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/21 16:10:54 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:59:49 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,15 @@ void	c3d_init_preerr(t_preerr *check);
 /*** ERROR CHECKING ***/
 /* c3d_error_checks.c */
 void	c3d_pre_error_check(int ac, char **av);
+void	c3d_check_config_elem(char *path);
 
 /* c3d_error_checks_helper.c */
-void	c3d_count_config_elem(t_preerr *check, char found);
+void	c3d_count_config_elem(t_preerr *check, char *found);
 void	c3d_errors_config_elem(t_preerr check);
+int		c3d_check_config_elem_line(char *rd, t_preerr *check, int fd);
+
+/*** DESTRUCTORS ***/
+/* c3d_destructor.c */
+void	c3d_single_desctruct(void *str);
 
 #endif

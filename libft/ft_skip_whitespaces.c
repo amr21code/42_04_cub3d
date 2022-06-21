@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c3d_init.c                                         :+:      :+:    :+:   */
+/*   ft_skip_whitespaces.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 16:11:05 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/21 16:23:26 by anruland         ###   ########.fr       */
+/*   Created: 2022/06/21 17:04:04 by anruland          #+#    #+#             */
+/*   Updated: 2022/06/21 17:05:03 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-void	c3d_init_preerr(t_preerr *check)
+int	is_whitespace(char c)
 {
-		check->no = 0;
-		check->ea = 0;
-		check->so = 0;
-		check->we = 0;
-		check->door = 0;
-		check->f = 0;
-		check->c = 0;
+	int	i;
+
+	i = 0;
+	while (i < 6)
+	{
+		if (c == 32)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+char	*skip_whitespaces(char *str)
+{
+	while (*str != '\0' && is_whitespace(*str))
+		str++;
+	return (str);
 }

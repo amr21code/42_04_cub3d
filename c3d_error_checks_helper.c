@@ -6,28 +6,30 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:09:06 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/21 16:11:02 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/21 17:09:16 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	c3d_count_config_elem(t_preerr *check, char found)
+void	c3d_count_config_elem(t_preerr *check, char *found)
 {
-	if (found == 'N')
+	if (!ft_strncmp(found, "NO ", 3))
 		check->no++;
-	else if (found == 'E')
+	else if (!ft_strncmp(found, "EA ", 3))
 		check->ea++;
-	else if (found == 'S')
+	else if (!ft_strncmp(found, "SO ", 3))
 		check->so++;
-	else if (found == 'W')
+	else if (!ft_strncmp(found, "WE ", 3))
 		check->we++;
-	else if (found == 'D')
+	else if (!ft_strncmp(found, "DO ", 3))
 		check->door++;
-	else if (found == 'F')
+	else if (!ft_strncmp(found, "F ", 2))
 		check->f++;
-	else if (found == 'C')
+	else if (!ft_strncmp(found, "C ", 2))
 		check->c++;
+	else
+		ft_printerror("Error\nInvalid config elements");
 }
 
 void	c3d_errors_config_elem(t_preerr check)
@@ -46,4 +48,32 @@ void	c3d_errors_config_elem(t_preerr check)
 		ft_printerror("Error\nConfig Element \"F\" invalid");
 	else if (check.c != 1)
 		ft_printerror("Error\nConfig Element \"C\" invalid");
+}
+
+int	c3d_check_config_elem_line(char *rd, t_preerr *check, int fd)
+{
+	char	*tmp;
+
+	tmp = NULL;
+	if (ft_strlen(rd) > 1)
+	{
+		while (*rd)
+		{
+			tmp = skip_whitespaces(rd);
+			if (ft_strchr("NSWEDFC", *tmp))
+			{
+				c3d_count_config_elem(check, tmp);
+				break ;
+			}
+			else if (ft_strchr(tmp, '1'))
+				return (0);
+			else
+			{
+				close(fd);
+				c3d_single_desctruct(rd);
+				ft_printerror("Error\nInvalid config elements 2");
+			}
+		}
+	}
+	return (1);
 }
