@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/21 15:13:48 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:10:54 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ enum e_keys
 	KEY_S = 115,
 	KEY_D = 100,
 	KEY_W = 119,
-	// KEY_ARR_LEFT = 65363,
-	// KEY_ARR_RIGHT = 65361,
+	KEY_ARR_LEFT = 65363,
+	KEY_ARR_RIGHT = 65361,
 	KEY_ESCAPE = 65307
 };
 # else
@@ -42,8 +42,8 @@ enum e_keys
 	KEY_S = 1,
 	KEY_D = 2,
 	KEY_W = 13,
-	// KEY_ARR_LEFT = 123,
-	// KEY_ARR_RIGHT = 124,
+	KEY_ARR_LEFT = 123,
+	KEY_ARR_RIGHT = 124,
 	KEY_ESCAPE = 53
 };
 # endif
@@ -92,5 +92,28 @@ typedef struct s_data
 	int			color_floor;
 	int			color_ceilling;
 }	t_data;
+
+typedef struct s_preerr
+{
+	int	no;
+	int	so;
+	int	ea;
+	int	we;
+	int	door;
+	int	c;
+	int	f;
+}	t_preerr;
+
+/*** INITIALISATION ***/
+/* c3d_init.c */
+void	c3d_init_preerr(t_preerr *check);
+
+/*** ERROR CHECKING ***/
+/* c3d_error_checks.c */
+void	c3d_pre_error_check(int ac, char **av);
+
+/* c3d_error_checks_helper.c */
+void	c3d_count_config_elem(t_preerr *check, char found);
+void	c3d_errors_config_elem(t_preerr check);
 
 #endif

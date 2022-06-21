@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   c3d_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/20 15:21:32 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/21 15:35:27 by anruland         ###   ########.fr       */
+/*   Created: 2022/06/21 16:11:05 by anruland          #+#    #+#             */
+/*   Updated: 2022/06/21 16:11:10 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+void	c3d_init_preerr(t_preerr *check)
 {
-	c3d_pre_error_check(ac, av);
+		check->no = 0;
+		check->ea = 0;
+		check->so = 0;
+		check->we = 0;
+		check->door = 0;
+		check->f = 0;
+		check->c = 0;
 }
