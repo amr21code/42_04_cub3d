@@ -6,7 +6,7 @@
 /*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:50:26 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/22 16:35:39 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/06/22 17:30:20 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ void	c3d_pre_destructor(int fd, char *line, char *rd, int error)
 	if (error == MAP_INV_CHAR)
 		ft_printerror("Error\nInvalid Character in Map");
 	else if (error == MAP_WALLS)
-		ft_printerror("Error\nMap needs to be enclose in Walls");
+		ft_printerror("Error\nMap needs to be enclosed in Walls");
 }

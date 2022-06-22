@@ -6,7 +6,7 @@
 /*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:35:11 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/22 17:08:04 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/06/22 17:56:52 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	c3d_check_map(int start, char *path)
 	while (rd)
 	{
 		i++;
-		if (i == start + 1 || i == len)
+		if (i == start || i == len)
 			c3d_pre_destructor(fd, line, rd, c3d_first_last(rd));
 		if (i > start + 1)
 			c3d_pre_destructor(fd, line, rd, c3d_check_line(line, rd));
@@ -89,14 +89,19 @@ int	c3d_check_line(char *prev, char *line)
 	int	len_prev;
 	int	len;
 
-	len_prev = ft_strlen(prev);
-	len = ft_strlen(line);
+	len_prev = ft_strlen_c(prev, '\n');
+	len = ft_strlen_c(line, '\n');
 	i = 0;
-	while (line[i])
+	while (i < len)
 	{
 		if (c3d_valid_map_char(line[i]) > 0)
 			return (MAP_INV_CHAR);
-		else if (line[i] == ' ')
+		if (i == 0 || i == len - 1)
+		{
+			if (line[i] != ' ' && line[i] != '1')
+				return (MAP_WALLS);
+		}
+		if (line[i] == ' ')
 		{
 			if (i < len_prev && prev[i] != '1' && prev[i] != ' ')
 				return (MAP_WALLS);
@@ -114,15 +119,22 @@ int	c3d_check_line(char *prev, char *line)
 	return (0);
 }
 
+
+
 int	c3d_first_last(char *line)
 {
 	int	i;
+	int	len;
 
 	i = 0;
-	while (line[i])
+	len = ft_strlen_c(line, '\n');
+	while (i < len)
 	{
 		if (line[i] != ' ' && line[i] != '1')
+		{
+			ft_printf("first_last %s\n", line);
 			return (MAP_WALLS);
+		}
 		i++;
 	}
 	return (0);
@@ -131,6 +143,9 @@ int	c3d_first_last(char *line)
 int	c3d_valid_map_char(char c)
 {
 	if (!ft_strchr(" NSWDE10", c))
+	{
+		ft_printf("c: %c", c);
 		return (MAP_INV_CHAR);
+	}
 	return (0);
 }
