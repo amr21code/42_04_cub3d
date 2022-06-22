@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:32 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/21 16:42:45 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/22 15:55:29 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 int	main(int ac, char **av)
 {
 	c3d_pre_error_check(ac, av);
-	c3d_check_config_elem(av[1]);
+	c3d_check_map(c3d_check_config_elem(av[1]), av[1]);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/21 16:59:49 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/22 17:07:40 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,12 @@ typedef struct s_preerr
 	int	f;
 }	t_preerr;
 
+enum e_error
+{
+	MAP_INV_CHAR = 42,
+	MAP_WALLS,
+};
+
 /*** INITIALISATION ***/
 /* c3d_init.c */
 void	c3d_init_preerr(t_preerr *check);
@@ -111,7 +117,11 @@ void	c3d_init_preerr(t_preerr *check);
 /*** ERROR CHECKING ***/
 /* c3d_error_checks.c */
 void	c3d_pre_error_check(int ac, char **av);
-void	c3d_check_config_elem(char *path);
+int		c3d_check_config_elem(char *path);
+void	c3d_check_map(int start, char *path);
+int		c3d_check_line(char *prev, char *line);
+int		c3d_first_last(char *line);
+int		c3d_valid_map_char(char c);
 
 /* c3d_error_checks_helper.c */
 void	c3d_count_config_elem(t_preerr *check, char *found);
@@ -121,5 +131,6 @@ int		c3d_check_config_elem_line(char *rd, t_preerr *check, int fd);
 /*** DESTRUCTORS ***/
 /* c3d_destructor.c */
 void	c3d_single_desctruct(void *str);
+void	c3d_pre_destructor(int fd, char *line, char *rd, int error);
 
 #endif
