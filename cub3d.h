@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/23 15:44:41 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/23 16:28:14 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,9 @@ typedef struct s_preerr
 	int	door;
 	int	c;
 	int	f;
+	int	invalid;
+	int	valid;
+	int	start_line;
 }	t_preerr;
 
 enum e_error
@@ -117,7 +120,6 @@ void	c3d_init_preerr(t_preerr *check);
 
 /*** ERROR CHECKING ***/
 /* c3d_error_checks.c */
-void	c3d_pre_error_check(int ac, char **av);
 int		c3d_check_config_elem(char *path);
 void	c3d_check_map(int start, char *path);
 int		c3d_count_players(char *rd);
@@ -125,7 +127,8 @@ int		c3d_count_players(char *rd);
 /* c3d_error_checks_helper.c */
 void	c3d_count_config_elem(t_preerr *check, char *found);
 void	c3d_errors_config_elem(t_preerr check);
-int		c3d_check_config_elem_line(char *rd, t_preerr *check, int fd);
+int		c3d_check_config_elem_line(char *rd, t_preerr *check);
+void	c3d_pre_error_check(int ac, char **av);
 
 /* c3d_error_checks_map_helper.c */
 int		c3d_valid_map_char(char c);

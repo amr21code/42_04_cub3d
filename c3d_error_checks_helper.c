@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:09:06 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/23 13:22:27 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/23 16:28:54 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,28 +29,30 @@ void	c3d_count_config_elem(t_preerr *check, char *found)
 	else if (!ft_strncmp(found, "C ", 2))
 		check->c++;
 	else
-		ft_printerror("Error\nInvalid config elements");
+		check->invalid = 1;
 }
 
 void	c3d_errors_config_elem(t_preerr check)
 {
 	if (check.no != 1)
-		ft_printerror("Error\nConfig Element \"NO\" invalid");
+		check.invalid = 1;
 	else if (check.ea != 1)
-		ft_printerror("Error\nConfig Element \"EA\" invalid");
+		check.invalid = 1;
 	else if (check.so != 1)
-		ft_printerror("Error\nConfig Element \"SO\" invalid");
+		check.invalid = 1;
 	else if (check.we != 1)
-		ft_printerror("Error\nConfig Element \"WE\" invalid");
+		check.invalid = 1;
 	else if (check.door != 1)
-		ft_printerror("Error\nConfig Element \"DO\" invalid");
+		check.invalid = 1;
 	else if (check.f != 1)
-		ft_printerror("Error\nConfig Element \"F\" invalid");
+		check.invalid = 1;
 	else if (check.c != 1)
-		ft_printerror("Error\nConfig Element \"C\" invalid");
+		check.invalid = 1;
+	if (check.invalid != 0)
+		ft_printerror("Error\nInvalid config elements");
 }
 
-int	c3d_check_config_elem_line(char *rd, t_preerr *check, int fd)
+int	c3d_check_config_elem_line(char *rd, t_preerr *check)
 {
 	char	*tmp;
 
@@ -66,14 +68,30 @@ int	c3d_check_config_elem_line(char *rd, t_preerr *check, int fd)
 				break ;
 			}
 			else if (ft_strchr(tmp, '1'))
-				return (0);
+				return (1);
 			else
 			{
-				close(fd);
-				c3d_single_desctruct(rd);
-				ft_printerror("Error\nInvalid config elements 2");
+				check->invalid = 1;
+				return (0);
 			}
 		}
 	}
-	return (1);
+	return (0);
+}
+
+
+void	c3d_pre_error_check(int ac, char **av)
+{
+	int	fd;
+
+	if (ac != 2)
+		ft_printerror("Error\nInvalid Arguments - Usage: ./cub3d map-path");
+	fd = open(av[1], O_RDONLY);
+	if (fd < 0)
+	{
+		ft_printerror("Error\nFile not found");
+	}
+	if (!ft_strnstr(av[1], ".cub", ft_strlen(av[1])))
+		ft_printerror("Error\nNot a .cub map");
+	close(fd);
 }

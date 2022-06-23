@@ -1,11 +1,30 @@
+
 NO ./textures
 SO ./textures/
-WE ./textures/
-EA ./textures/
-DO ./textures/
 
-F 220,100,0
+
+WE ./textures/
+
+EA ./textures/
+DO                               ./textures/
+
+
+F         220,          100     ,0
+
+
+
 C 225,30,0
+
+
+
+
+
+
+
+
+
+
+
 
 
 1111111111 1111111111111111111111111

@@ -6,27 +6,11 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:35:11 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/23 15:44:31 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/23 16:31:13 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	c3d_pre_error_check(int ac, char **av)
-{
-	int	fd;
-
-	if (ac != 2)
-		ft_printerror("Error\nInvalid Arguments - Usage: ./cub3d map-path");
-	fd = open(av[1], O_RDONLY);
-	if (fd < 0)
-	{
-		ft_printerror("Error\nFile not found");
-	}
-	if (!ft_strnstr(av[1], ".cub", ft_strlen(av[1])))
-		ft_printerror("Error\nNot a .cub map");
-	close(fd);
-}
 
 int	c3d_check_config_elem(char *path)
 {
@@ -43,17 +27,17 @@ int	c3d_check_config_elem(char *path)
 	while (rd)
 	{
 		lines++;
-		if (!c3d_check_config_elem_line(rd, &check, fd))
+		if (check.invalid == 0 && check.valid == 0)
 		{
-			c3d_single_desctruct(rd);
-			break ;
+			check.start_line = lines;
+			check.valid = c3d_check_config_elem_line(rd, &check);
 		}
 		c3d_single_desctruct(rd);
 		rd = get_next_line(fd);
 	}
 	close(fd);
 	c3d_errors_config_elem(check);
-	return (lines);
+	return (check.start_line);
 }
 
 void	c3d_check_map(int start, char *path)
