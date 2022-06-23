@@ -98,6 +98,7 @@ int		ft_isdigit_str(char *str);
 char	*skip_whitespaces(char *str);
 void	ft_char_replace(char *str, char repl, char with);
 int		ft_char_in_str(char *s, char c);
+char	*ft_strndup_char(char *src, int len, char c);;
 
 /* ************** ft_printf ************ */
 int		ft_printf(const char *format, ...);

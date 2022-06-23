@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:35:11 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/23 15:05:19 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/23 15:44:31 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,13 @@ int	c3d_check_config_elem(char *path)
 void	c3d_check_map(int start, char *path)
 {
 	int		fd;
-	int		i;
 	char	*line;
-	int		len;
 	char	*rd;
+	int		players;
+	int		i;
+	int		len;
 
+	players = 0;
 	line = NULL;
 	len = ft_linecount(path);
 	i = 0;
@@ -77,6 +79,7 @@ void	c3d_check_map(int start, char *path)
 			c3d_pre_destructor(fd, line, rd, c3d_first_last(rd));
 		if (i > start)
 		{
+			players += c3d_count_players(rd);
 			line = c3d_unify_map_len(line, rd);
 			rd = c3d_unify_map_len(rd, line);
 			c3d_pre_destructor(fd, line, rd, c3d_check_line(line, rd));
@@ -85,42 +88,23 @@ void	c3d_check_map(int start, char *path)
 		line = rd;
 		rd = get_next_line(fd);
 	}
+	if (players != 1)
+		c3d_pre_destructor(fd, line, rd, MAP_PLAYER);
+	close(fd);
 	c3d_single_desctruct(line);
 }
 
-int	c3d_check_line(char *prev, char *line)
+int	c3d_count_players(char *rd)
 {
 	int	i;
-	int	len;
-	int	errno;
+	int	players;
 
-	errno = 0;
 	i = 0;
-	len = ft_strlen(line);
-	while (i < len)
+	players = 0;
+	while (rd[i])
 	{
-		if (c3d_valid_map_char(line[i]) > 0)
-			return (MAP_INV_CHAR);
-		if (i == 0 || i == len - 1)
-		{
-			if (!ft_char_in_str(" 1", line[i]))
-				return (MAP_WALLS);
-		}
-		if (line[i] == ' ')
-		{
-			errno = c3d_check_surroundings(line, prev, i);
-			if (errno)
-				return (errno);
-		}
-		// ft_printf("i %d len %d\nprev %s-\nline %s-\n",i, len, prev, line);
-		// ft_printf("prev[%d] %c\n",i, *prev[i]);
-		if (prev[i] == ' ')
-		{
-			errno = c3d_check_surroundings(prev, line, i);
-			if (errno)
-				return (errno);
-		}
+		players += ft_char_in_str("NSWE", rd[i]);
 		i++;
 	}
-	return (0);
+	return (players);
 }

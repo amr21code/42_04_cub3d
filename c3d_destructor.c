@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:50:26 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/23 13:15:12 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/23 15:34:48 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,6 @@ void	c3d_pre_destructor(int fd, char *line, char *rd, int error)
 		ft_printerror("Error\nInvalid Character in Map");
 	else if (error == MAP_WALLS)
 		ft_printerror("Error\nMap needs to be enclosed in Walls");
+	else if (error == MAP_PLAYER)
+		ft_printerror("Error\ninvalid amount of players");
 }

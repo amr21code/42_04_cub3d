@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:11:06 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/23 15:01:46 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/23 15:43:38 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	c3d_first_last(char *line)
 
 int	c3d_valid_map_char(char c)
 {
-	if (!ft_strchr(" NSWDE10", c))
+	if (!ft_char_in_str(" NSWDE10", c))
 	{
 		return (MAP_INV_CHAR);
 	}
@@ -78,25 +78,37 @@ char	*c3d_unify_map_len(char *check, char *comp)
 	return (check);
 }
 
-char	*ft_strndup_char(char *src, int len, char c)
+int	c3d_check_line(char *prev, char *line)
 {
-	char	*dest;
-	int		i;
+	int	i;
+	int	len;
+	int	errno;
 
+	errno = 0;
 	i = 0;
-	dest = (char *)malloc(sizeof(char) * len + 1);
-	if (!dest)
-		return (NULL);
-	while (src[i] && i < len)
-	{
-		dest[i] = src[i];
-		i++;
-	}
+	len = ft_strlen(line);
 	while (i < len)
 	{
-		dest[i] = c;
+		if (c3d_valid_map_char(line[i]) > 0)
+			return (MAP_INV_CHAR);
+		if (i == 0 || i == len - 1)
+		{
+			if (!ft_char_in_str(" 1", line[i]))
+				return (MAP_WALLS);
+		}
+		if (line[i] == ' ')
+		{
+			errno = c3d_check_surroundings(line, prev, i);
+			if (errno)
+				return (errno);
+		}
+		if (prev[i] == ' ')
+		{
+			errno = c3d_check_surroundings(prev, line, i);
+			if (errno)
+				return (errno);
+		}
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (0);
 }

@@ -33,7 +33,7 @@ SRC_C 		= ft_atoi.c ft_memchr.c ft_split.c ft_strmapi.c\
 				get_next_line.c \
 				ft_linecount.c ft_printerror.c ft_realloc.c\
 				ft_strlen_c.c ft_strndup.c ft_atol.c ft_skip_whitespaces.c \
-				ft_char_replace.c ft_char_in_str.c
+				ft_char_replace.c ft_char_in_str.c ft_strndup_char.c
 SRC_O 		= $(SRC_C:%.c=%.o)
 
 # Rules
