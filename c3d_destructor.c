@@ -35,4 +35,3 @@ void	c3d_pre_destructor(int fd, char *line, char *rd, int error)
 	else if (error == MAP_WALLS)
 		ft_printerror("Error\nMap needs to be enclosed in Walls");
 }
-
