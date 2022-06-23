@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_error_checks.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:35:11 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/22 17:56:52 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/06/23 14:01:37 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,10 @@ void	c3d_check_map(int start, char *path)
 	while (rd)
 	{
 		i++;
+		ft_char_replace(rd, '\n', ' ');
 		if (i == start || i == len)
 			c3d_pre_destructor(fd, line, rd, c3d_first_last(rd));
-		if (i > start + 1)
+		if (i > start)
 			c3d_pre_destructor(fd, line, rd, c3d_check_line(line, rd));
 		c3d_single_desctruct(line);
 		line = rd;
@@ -83,14 +84,36 @@ void	c3d_check_map(int start, char *path)
 	c3d_single_desctruct(line);
 }
 
+int	c3d_check_surroundings(char *line, char *prev, int i)
+{
+	int	len;
+	int	len_prev;
+
+	len = ft_strlen(line);
+	len_prev = ft_strlen(prev);
+	if (i > 0 && !ft_char_in_str(" 1", line[i - 1]))
+		return (MAP_WALLS);
+	if (i + 1 < len && !ft_char_in_str(" 1", line[i + 1]))
+		return (MAP_WALLS);
+	if (i < len_prev && !ft_char_in_str(" 1", prev[i]))
+	{
+		return (MAP_WALLS);
+	}
+	if (i > 0 && i - 1 < len_prev && !ft_char_in_str(" 1", prev[i - 1]))
+		return (MAP_WALLS);
+	if (i + 1 < len_prev && !ft_char_in_str(" 1", prev[i + 1]))
+		return (MAP_WALLS);
+	return (0);
+}
+
 int	c3d_check_line(char *prev, char *line)
 {
 	int	i;
-	int	len_prev;
 	int	len;
+	int	errno;
 
-	len_prev = ft_strlen_c(prev, '\n');
-	len = ft_strlen_c(line, '\n');
+	errno = 0;
+	len = ft_strlen(line);
 	i = 0;
 	while (i < len)
 	{
@@ -98,28 +121,25 @@ int	c3d_check_line(char *prev, char *line)
 			return (MAP_INV_CHAR);
 		if (i == 0 || i == len - 1)
 		{
-			if (line[i] != ' ' && line[i] != '1')
+			if (!ft_char_in_str(" 1", line[i]))
 				return (MAP_WALLS);
 		}
 		if (line[i] == ' ')
 		{
-			if (i < len_prev && prev[i] != '1' && prev[i] != ' ')
-				return (MAP_WALLS);
-			if (i > 0 && line[i - 1] != '1' && line[i - 1] != ' ')
-				return (MAP_WALLS);
-			if (i + 1 < len && line[i + 1] != '1' && line[i + 1] != ' ')
-				return (MAP_WALLS);
-			if (i > 0 && i - 1 < len_prev && prev[i - 1] != '1' && prev[i - 1] != ' ')
-				return (MAP_WALLS);
-			if (i + 1 < len_prev && prev[i + 1] != '1' && prev[i + 1] != ' ')
-				return (MAP_WALLS);
+			errno = c3d_check_surroundings(line, prev, i);
+			if (errno)
+				return (errno);
+		}
+		if (prev[i] == ' ')
+		{
+			errno = c3d_check_surroundings(prev, line, i);
+			if (errno)
+				return (errno);
 		}
 		i++;
 	}
 	return (0);
 }
-
-
 
 int	c3d_first_last(char *line)
 {

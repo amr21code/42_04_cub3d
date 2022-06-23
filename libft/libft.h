@@ -96,6 +96,8 @@ int		ft_strlen_c(char *str, char c);
 long	ft_atol(const char *str);
 int		ft_isdigit_str(char *str);
 char	*skip_whitespaces(char *str);
+void	ft_char_replace(char *str, char repl, char with);
+int		ft_char_in_str(char *s, char c);
 
 /* ************** ft_printf ************ */
 int		ft_printf(const char *format, ...);
