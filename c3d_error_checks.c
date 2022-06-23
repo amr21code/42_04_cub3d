@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:35:11 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/23 16:31:13 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/23 17:54:56 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	c3d_check_map(int start, char *path)
 			c3d_pre_destructor(fd, line, rd, c3d_first_last(rd));
 		if (i > start)
 		{
-			players += c3d_count_players(rd);
+			players += c3d_check_string(rd, "NSEW", 1);
 			line = c3d_unify_map_len(line, rd);
 			rd = c3d_unify_map_len(rd, line);
 			c3d_pre_destructor(fd, line, rd, c3d_check_line(line, rd));
@@ -78,7 +78,11 @@ void	c3d_check_map(int start, char *path)
 	c3d_single_desctruct(line);
 }
 
-int	c3d_count_players(char *rd)
+/**
+ * flag = 1: counts the number of players
+ * flag = 0: 1 for invalid string, 0 for valid
+ */
+int	c3d_check_string(char *rd, char *str, int flag)
 {
 	int	i;
 	int	players;
@@ -87,7 +91,10 @@ int	c3d_count_players(char *rd)
 	players = 0;
 	while (rd[i])
 	{
-		players += ft_char_in_str("NSWE", rd[i]);
+		if (flag == 1)
+			players += ft_char_in_str(str, rd[i]);
+		else if (!ft_char_in_str(str, rd[i]))
+			return (1);
 		i++;
 	}
 	return (players);

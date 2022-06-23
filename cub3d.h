@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/23 16:28:14 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/23 17:54:28 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,16 +95,19 @@ typedef struct s_data
 
 typedef struct s_preerr
 {
-	int	no;
-	int	so;
-	int	ea;
-	int	we;
-	int	door;
-	int	c;
-	int	f;
-	int	invalid;
-	int	valid;
-	int	start_line;
+	int		no;
+	int		so;
+	int		ea;
+	int		we;
+	int		door;
+	int		c;
+	int		f;
+	int		invalid;
+	int		valid;
+	int		start_line;
+	long	r;
+	long	g;
+	long	b;
 }	t_preerr;
 
 enum e_error
@@ -122,7 +125,7 @@ void	c3d_init_preerr(t_preerr *check);
 /* c3d_error_checks.c */
 int		c3d_check_config_elem(char *path);
 void	c3d_check_map(int start, char *path);
-int		c3d_count_players(char *rd);
+int		c3d_check_string(char *rd, char *str, int flag);
 
 /* c3d_error_checks_helper.c */
 void	c3d_count_config_elem(t_preerr *check, char *found);

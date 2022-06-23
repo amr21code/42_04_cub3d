@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:09:06 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/23 16:28:54 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/23 18:14:12 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,79 @@ void	c3d_errors_config_elem(t_preerr check)
 		ft_printerror("Error\nInvalid config elements");
 }
 
+int	c3d_check_rgb_range(int color)
+{
+	if (color < 0 || color > 255)
+		return (0);
+	return (1);
+}
+
+int	c3d_check_between_elem(char *str, int last_nbr, t_preerr *check)
+{
+	int		i;
+	int		j;
+	char	*tmp;
+	int		len;
+
+	j = 0;
+	tmp = NULL;
+	tmp = skip_whitespaces(str);
+	i = (tmp - str);
+	i += ft_nbrlen_base_sign((long long)last_nbr, 1, 10);
+	len = ft_strlen_c(&str[i], ',');
+	while (j < len)
+	{
+		if (ft_isdigit(str[i + j]))
+			check->invalid = 1;
+		j++;
+	}
+	return (i);
+}
+
+void	c3d_check_config_elem_details(char *rd, t_preerr *check)
+{
+	int		i;
+	int		fd;
+	char	*tmp;
+
+	i = 0;
+	fd = 0;
+	tmp = NULL;
+	if (check->invalid != 0)
+		return ;
+	if (rd[i + 1] && rd[i + 1] == ' ')
+	{
+		i += 1;
+		if (c3d_check_string(&rd[i], "0123456789, \n", 0))
+			check->invalid = 1;
+		check->r = ft_atol(&rd[i]);
+		i += ft_strlen_c(&rd[i], ',') + 1;
+		c3d_check_between_elem(&rd[i], check->r, check);
+		check->g = ft_atol(&rd[i]);
+		c3d_check_between_elem(&rd[i], check->g, check);
+		i += ft_strlen_c(&rd[i], ',') + 1;
+		check->b = ft_atol(&rd[i]);
+		c3d_check_between_elem(&rd[i], check->b, check);
+		if (!(c3d_check_rgb_range(check->r)
+				&& c3d_check_rgb_range(check->g)
+				&& c3d_check_rgb_range(check->b)))
+			check->invalid = 1;
+	}
+	else if (ft_char_in_str("NSEWD", rd[i]))
+	{
+		i += 2;
+		tmp = ft_strtrim(&rd[i], " \n");
+		fd = open(tmp, O_RDONLY);
+		c3d_single_desctruct(tmp);
+		if (fd > -1)
+			close(fd);
+		else
+			check->invalid = 1;
+	}
+	else
+		check->invalid = 1;
+}
+
 int	c3d_check_config_elem_line(char *rd, t_preerr *check)
 {
 	char	*tmp;
@@ -62,9 +135,10 @@ int	c3d_check_config_elem_line(char *rd, t_preerr *check)
 		while (*rd)
 		{
 			tmp = skip_whitespaces(rd);
-			if (ft_strchr("NSWEDFC", *tmp))
+			if (ft_char_in_str("NSWEDFC", *tmp))
 			{
 				c3d_count_config_elem(check, tmp);
+				c3d_check_config_elem_details(tmp, check);
 				break ;
 			}
 			else if (ft_strchr(tmp, '1'))

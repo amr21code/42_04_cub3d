@@ -103,7 +103,6 @@ char	*ft_strndup_char(char *src, int len, char c);;
 /* ************** ft_printf ************ */
 int		ft_printf(const char *format, ...);
 int		ft_count_args_printf(const char *format);
-size_t	ft_nbrlen(long long nbr, int sign, int base);
 int		ft_printf_strlen(char *str);
 
 /* ************** get_next_line ************ */

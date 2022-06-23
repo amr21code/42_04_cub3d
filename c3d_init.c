@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:11:05 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/23 16:29:25 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/23 17:54:50 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,7 @@ void	c3d_init_preerr(t_preerr *check)
 		check->invalid = 0;
 		check->valid = 0;
 		check->start_line = 0;
+		check->r = 0;
+		check->g = 0;
+		check->b = 0;
 }
