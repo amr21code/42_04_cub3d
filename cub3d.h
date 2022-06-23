@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/22 17:07:40 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/06/23 15:00:54 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,13 +120,18 @@ void	c3d_pre_error_check(int ac, char **av);
 int		c3d_check_config_elem(char *path);
 void	c3d_check_map(int start, char *path);
 int		c3d_check_line(char *prev, char *line);
-int		c3d_first_last(char *line);
-int		c3d_valid_map_char(char c);
 
 /* c3d_error_checks_helper.c */
 void	c3d_count_config_elem(t_preerr *check, char *found);
 void	c3d_errors_config_elem(t_preerr check);
 int		c3d_check_config_elem_line(char *rd, t_preerr *check, int fd);
+
+/* c3d_error_checks_map_helper .c */
+int		c3d_valid_map_char(char c);
+int		c3d_first_last(char *line);
+int		c3d_check_surroundings(char *line, char *prev, int i);
+char	*ft_strndup_char(char *src, int len, char c);
+char	*c3d_unify_map_len(char *check, char *comp);
 
 /*** DESTRUCTORS ***/
 /* c3d_destructor.c */
