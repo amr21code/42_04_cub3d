@@ -6,12 +6,18 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:09:06 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/23 18:16:01 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/24 08:46:18 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/**
+ * @brief counts the config elements of one line
+ * 
+ * @param check 
+ * @param found 
+ */
 void	c3d_count_config_elem(t_preerr *check, char *found)
 {
 	if (!ft_strncmp(found, "NO ", 3))
@@ -32,6 +38,11 @@ void	c3d_count_config_elem(t_preerr *check, char *found)
 		check->invalid = 1;
 }
 
+/**
+ * @brief prints error if invalid config elements 
+ * 
+ * @param check 
+ */
 void	c3d_errors_config_elem(t_preerr check)
 {
 	if (check.no != 1)
@@ -52,6 +63,12 @@ void	c3d_errors_config_elem(t_preerr check)
 		ft_printerror("Error\nInvalid config elements");
 }
 
+/**
+ * @brief checks if color is in the range of [0,255]
+ * 
+ * @param color 
+ * @return int 
+ */
 int	c3d_check_rgb_range(int color)
 {
 	if (color < 0 || color > 255)
@@ -59,6 +76,14 @@ int	c3d_check_rgb_range(int color)
 	return (1);
 }
 
+/**
+ * @brief checks if there is more than one number between commas
+ * 
+ * @param str 
+ * @param last_nbr 
+ * @param check 
+ * @return int 
+ */
 int	c3d_check_between_elem(char *str, int last_nbr, t_preerr *check)
 {
 	int		i;
@@ -81,6 +106,12 @@ int	c3d_check_between_elem(char *str, int last_nbr, t_preerr *check)
 	return (i);
 }
 
+/**
+ * @brief checks if path or color is correct
+ * 
+ * @param rd 
+ * @param check 
+ */
 void	c3d_check_config_elem_details(char *rd, t_preerr *check)
 {
 	int		i;
@@ -125,6 +156,13 @@ void	c3d_check_config_elem_details(char *rd, t_preerr *check)
 		check->invalid = 1;
 }
 
+/**
+ * @brief checks number and format of config elements of one line
+ * 
+ * @param rd line that is checked
+ * @param check struct in which the number of config elements is counted
+ * @return int 
+ */
 int	c3d_check_config_elem_line(char *rd, t_preerr *check)
 {
 	char	*tmp;
@@ -153,7 +191,12 @@ int	c3d_check_config_elem_line(char *rd, t_preerr *check)
 	return (0);
 }
 
-
+/**
+ * @brief checks input arguments
+ * 
+ * @param ac 
+ * @param av 
+ */
 void	c3d_pre_error_check(int ac, char **av)
 {
 	int	fd;
