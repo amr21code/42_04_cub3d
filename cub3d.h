@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/23 17:54:28 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/24 11:22:10 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,22 @@ enum e_keys
 };
 # endif
 
+enum e_tex
+{
+	N = 0,
+	E,
+	S,
+	W,
+	D
+};
+
+typedef struct s_color
+{
+	int	r;
+	int	g;
+	int	b;
+}	t_color;
+
 typedef struct s_mlx
 {
 	void	*mlx;
@@ -59,8 +75,8 @@ typedef struct s_mlx
 typedef struct s_map
 {
 	char	**map;
-	int		x;
-	int		y;
+	int		size_x;
+	int		size_y;
 	char	*path;
 }	t_map;
 
@@ -76,11 +92,16 @@ typedef struct s_image
 	int		size_y;
 }	t_image;
 
-typedef struct s_player
+typedef struct s_vector
 {
-	int	collected;
 	int	x;
 	int	y;
+}	t_vector;
+
+typedef struct s_player
+{
+	t_vector	pos;
+	t_vector	view;
 }	t_player;
 
 typedef struct s_data
@@ -120,6 +141,7 @@ enum e_error
 /*** INITIALISATION ***/
 /* c3d_init.c */
 void	c3d_init_preerr(t_preerr *check);
+void	c3d_init_cub(t_data *cub, char *path);
 
 /*** ERROR CHECKING ***/
 /* c3d_error_checks.c */
