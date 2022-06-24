@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:32 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/24 12:46:52 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/24 13:19:42 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,13 @@ int	main(int ac, char **av)
 	c3d_pre_error_check(ac, av);
 	c3d_check_map(c3d_check_config_elem(av[1]), av[1]);
 	cub = (t_data *)malloc(sizeof(t_data));
-	c3d_init_cub(cub, av[1]);
-	
-	int i;
-	
-	i=0;
-	while (i < cub->map.size_y)
+	if (!cub)
+		ft_printerror("Error\nMalloc of Cub struct failed\n");
+	cub->mlx.mlx = mlx_init();
+	if (!cub->mlx.mlx)
 	{
-		ft_printf("%s-\n", cub->map.map[i]);
-		i++;
+		c3d_single_desctruct(cub);
+		ft_printerror("Error\nMLX init failed\n");
 	}
+	c3d_init_cub(cub, av[1]);
 }
