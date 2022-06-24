@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/24 11:22:10 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/24 12:01:25 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,13 @@ typedef struct s_data
 	int			color_ceilling;
 }	t_data;
 
+typedef struct s_maperr
+{
+	int	errno;
+	int	players;
+	int	len;
+}	t_maperr;
+
 typedef struct s_preerr
 {
 	int		no;
@@ -136,6 +143,7 @@ enum e_error
 	MAP_INV_CHAR = 42,
 	MAP_WALLS,
 	MAP_PLAYER,
+	MAP_INVALID,
 };
 
 /*** INITIALISATION ***/
