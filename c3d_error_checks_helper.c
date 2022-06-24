@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:09:06 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/24 08:46:18 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/24 13:06:23 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,8 +129,8 @@ void	c3d_check_config_elem_details(char *rd, t_preerr *check)
 		if (c3d_check_string(&rd[i], "0123456789, \n", 0))
 			check->invalid = 1;
 		check->r = ft_atol(&rd[i]);
-		i += ft_strlen_c(&rd[i], ',') + 1;
 		c3d_check_between_elem(&rd[i], check->r, check);
+		i += ft_strlen_c(&rd[i], ',') + 1;
 		check->g = ft_atol(&rd[i]);
 		c3d_check_between_elem(&rd[i], check->g, check);
 		i += ft_strlen_c(&rd[i], ',') + 1;

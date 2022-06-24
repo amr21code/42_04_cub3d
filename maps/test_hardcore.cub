@@ -1,11 +1,11 @@
-NO ./textures
-SO ./textures/
-WE ./textures/
-EA ./textures/
-DO ./textures/
+NO ./textures/test.tex
+SO ./textures/test.tex
+WE ./textures/test.tex
+EA ./textures/test.tex
+DO ./textures/test.tex
 
 F 220,100,0
-C 225,30,0
+C 225,20,0
                                   111111
        111111                     100001
        100001                     100001111111111

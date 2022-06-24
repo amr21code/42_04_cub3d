@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:11:05 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/24 11:46:02 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/24 12:46:04 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,20 +95,17 @@ void	c3d_init_config_elem(t_data *cub, char *rd)
 
 	len = 0;
 	tmp = NULL;
-	while (*rd)
+	tmp = skip_whitespaces(rd);
+	if (ft_char_in_str("NSWED", *tmp))
+		c3d_init_save_tex_path(cub, tmp);
+	else if (ft_char_in_str("FC", *tmp))
+		c3d_init_save_colors(cub, tmp);
+	else if (ft_char_in_str("1", *tmp))
 	{
-		tmp = skip_whitespaces(rd);
-		if (ft_char_in_str("NSWED", *tmp))
-			c3d_init_save_tex_path(cub, tmp);
-		else if (ft_char_in_str("FC", *tmp))
-			c3d_init_save_colors(cub, tmp);
-		else if (ft_char_in_str("1", *tmp))
-		{
-			len = ft_strlen(rd);
-			if (len > cub->map.size_x)
-				cub->map.size_x = len;
-			cub->map.size_y++;
-		}
+		len = ft_strlen(rd);
+		if (len > cub->map.size_x)
+			cub->map.size_x = len;
+		cub->map.size_y++;
 	}
 }
 
@@ -142,7 +139,7 @@ void	c3d_init_map(t_data *cub, char *path)
 	while (rd)
 	{
 		tmp = skip_whitespaces(rd);
-		if (ft_char_in_str("1", *tmp))
+		if (*tmp == '1')
 		{
 			c3d_save_map(cub, rd, i);
 			i++;
@@ -173,4 +170,5 @@ void	c3d_init_config(t_data *cub, char *path)
 void	c3d_init_cub(t_data *cub, char *path)
 {
 	c3d_init_config(cub, path);
+	c3d_init_map(cub, path);
 }
