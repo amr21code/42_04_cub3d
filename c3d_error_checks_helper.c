@@ -6,7 +6,7 @@
 /*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:09:06 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/24 07:54:53 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/06/24 07:59:52 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	c3d_errors_config_elem(t_preerr check)
 }
 
 /**
- * @brief checks if number is in the range of [0,255]
+ * @brief checks if color is in the range of [0,255]
  * 
  * @param color 
  * @return int 
@@ -76,6 +76,14 @@ int	c3d_check_rgb_range(int color)
 	return (1);
 }
 
+/**
+ * @brief checks if there is more than one number between commas
+ * 
+ * @param str 
+ * @param last_nbr 
+ * @param check 
+ * @return int 
+ */
 int	c3d_check_between_elem(char *str, int last_nbr, t_preerr *check)
 {
 	int		i;
@@ -98,6 +106,12 @@ int	c3d_check_between_elem(char *str, int last_nbr, t_preerr *check)
 	return (i);
 }
 
+/**
+ * @brief checks if path or color is correct
+ * 
+ * @param rd 
+ * @param check 
+ */
 void	c3d_check_config_elem_details(char *rd, t_preerr *check)
 {
 	int		i;
@@ -177,7 +191,12 @@ int	c3d_check_config_elem_line(char *rd, t_preerr *check)
 	return (0);
 }
 
-
+/**
+ * @brief checks input arguments
+ * 
+ * @param ac 
+ * @param av 
+ */
 void	c3d_pre_error_check(int ac, char **av)
 {
 	int	fd;
