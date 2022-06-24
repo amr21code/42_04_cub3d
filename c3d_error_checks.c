@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_error_checks.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:35:11 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/23 17:54:56 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/24 07:50:10 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
+/**
+ * @brief checks if input file is correct
+ * 
+ * @param path path of input file
+ * @return int 
+ */
 int	c3d_check_config_elem(char *path)
 {
 	int			fd;

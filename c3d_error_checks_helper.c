@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_error_checks_helper.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:09:06 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/23 18:14:12 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/24 07:54:53 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/**
+ * @brief counts the config elements of one line
+ * 
+ * @param check 
+ * @param found 
+ */
 void	c3d_count_config_elem(t_preerr *check, char *found)
 {
 	if (!ft_strncmp(found, "NO ", 3))
@@ -32,6 +38,11 @@ void	c3d_count_config_elem(t_preerr *check, char *found)
 		check->invalid = 1;
 }
 
+/**
+ * @brief prints error if invalid config elements 
+ * 
+ * @param check 
+ */
 void	c3d_errors_config_elem(t_preerr check)
 {
 	if (check.no != 1)
@@ -52,6 +63,12 @@ void	c3d_errors_config_elem(t_preerr check)
 		ft_printerror("Error\nInvalid config elements");
 }
 
+/**
+ * @brief checks if number is in the range of [0,255]
+ * 
+ * @param color 
+ * @return int 
+ */
 int	c3d_check_rgb_range(int color)
 {
 	if (color < 0 || color > 255)
@@ -125,6 +142,13 @@ void	c3d_check_config_elem_details(char *rd, t_preerr *check)
 		check->invalid = 1;
 }
 
+/**
+ * @brief checks number and format of config elements of one line
+ * 
+ * @param rd line that is checked
+ * @param check struct in which the number of config elements is counted
+ * @return int 
+ */
 int	c3d_check_config_elem_line(char *rd, t_preerr *check)
 {
 	char	*tmp;
