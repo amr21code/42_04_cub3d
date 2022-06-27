@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:32 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/27 10:44:47 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/27 11:16:17 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ int	main(int ac, char **av)
 	c3d_init_cub(cub, av[1]);
 	c3d_load_tex(cub);
 	c3d_init_win(cub);
-	c3d_destructor(cub);
+	// mlx_key_hook(cub->mlx.win, sl_input, &cub);
+	mlx_hook(cub->mlx.win, 17, 0, c3d_destructor, cub);
+	mlx_loop(cub->mlx.mlx);
 }

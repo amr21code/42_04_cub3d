@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:50:26 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/27 10:37:46 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/27 11:22:25 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,28 @@ void	c3d_pre_destructor(int fd, char *line, char *rd, int error)
 		ft_printerror("Error\nUnknown");
 }
 
-void	c3d_destructor(t_data *cub)
+void	c3d_free_images(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < TEX)
+	{
+		if (data->images[i].img)
+			mlx_destroy_image(data->mlx.mlx, data->images[i].img);
+		data->images[i].img = NULL;
+		i++;
+	}
+}
+
+int	c3d_destructor(t_data *cub)
 {
 	int	i;
 
 	i = 0;
 	c3d_free_array(cub->map.map);
-	c3d_single_desctruct(cub->map.path);
+	// c3d_single_desctruct(cub->map.path);
+	c3d_free_images(cub);
 	while (i < TEX)
 	{
 		c3d_single_desctruct(cub->images[i].path);
@@ -74,4 +89,7 @@ void	c3d_destructor(t_data *cub)
 	mlx_destroy_window(cub->mlx.mlx, cub->mlx.win);
 	mlx_destroy_display(cub->mlx.mlx);
 	c3d_single_desctruct(cub->mlx.mlx);
+	c3d_single_desctruct(cub);
+	exit(0);
+	return (0);
 }
