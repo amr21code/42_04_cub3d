@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:11:05 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/24 12:46:04 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/27 10:52:47 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,19 @@ void	c3d_save_map(t_data *cub, char *line, int y)
 	{
 		if (line[i] != '\n')
 			cub->map.map[y][i] = line[i];
+		if (!ft_char_in_str(" 01D\n", line[i]))
+		{
+			cub->player.pos.x = i;
+			cub->player.pos.y = y;
+			if (line[i] == 'E')
+				cub->player.view.x = 1;
+			else if (line[i] == 'W')
+				cub->player.view.x = -1;
+			else if (line[i] == 'N')
+				cub->player.view.y = 1;
+			else if (line[i] == 'S')
+				cub->player.view.y = -1;
+		}
 		i++;
 	}
 }
@@ -171,4 +184,35 @@ void	c3d_init_cub(t_data *cub, char *path)
 {
 	c3d_init_config(cub, path);
 	c3d_init_map(cub, path);
+}
+
+void	c3d_load_tex(t_data *data)
+{
+	int	i;
+	int	fd;
+
+	i = 0;
+	while (i < TEX)
+	{
+		fd = open(data->images[i].path, O_RDONLY);
+		c3d_init_sprite(data->mlx.mlx, &data->images[i]);
+		if (!data->images[i].img)
+			ft_printerror("Error\nFailed loading texture");
+		i++;
+		close(fd);
+	}
+}
+
+void	c3d_init_sprite(void *mlx, t_image *image)
+{
+	image->img = mlx_xpm_file_to_image(mlx, image->path,
+			&image->size_x, &image->size_y);
+}
+
+void	c3d_init_win(t_data *data)
+{
+	data->mlx.width = 1024;
+	data->mlx.height = 768;
+	data->mlx.win = mlx_new_window(data->mlx.mlx, data->mlx.width,
+			data->mlx.height, "cub3D");
 }

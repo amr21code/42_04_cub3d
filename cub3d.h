@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/24 12:01:25 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/27 10:35:35 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,5 +174,7 @@ int		c3d_check_line(char *prev, char *line);
 /* c3d_destructor.c */
 void	c3d_single_desctruct(void *str);
 void	c3d_pre_destructor(int fd, char *line, char *rd, int error);
+void	c3d_destructor(t_data *cub);
+void	c3d_free_array(char **argv);
 
 #endif

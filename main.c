@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:32 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/24 13:19:42 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/27 10:44:47 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,7 @@ int	main(int ac, char **av)
 		ft_printerror("Error\nMLX init failed\n");
 	}
 	c3d_init_cub(cub, av[1]);
+	c3d_load_tex(cub);
+	c3d_init_win(cub);
+	c3d_destructor(cub);
 }
