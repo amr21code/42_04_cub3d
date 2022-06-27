@@ -6,7 +6,7 @@
 #    By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/20 15:14:15 by anruland          #+#    #+#              #
-#    Updated: 2022/06/27 11:03:43 by anruland         ###   ########.fr        #
+#    Updated: 2022/06/27 12:43:16 by anruland         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,9 @@ SRC		=	main.c \
 			c3d_destructor.c \
 			c3d_init_config.c \
 			c3d_init_map.c \
-			c3d_init_textures.c 
+			c3d_init_textures.c \
+			c3d_draw_bg.c \
+			c3d_draw_minimap.c
 
 
 # Mac or Linux?

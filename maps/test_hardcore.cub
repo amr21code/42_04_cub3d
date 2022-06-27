@@ -1,11 +1,16 @@
-NO ./textures/test.tex
-SO ./textures/test.tex
-WE ./textures/test.tex
-EA ./textures/test.tex
-DO ./textures/test.tex
+NO          ./textures/wall.xpm
+SO ./textures/wall.xpm
+                 WE ./textures/wall.xpm
+EA                       ./textures/wall.xpm
 
-F 220,100,0
-C 225,20,0
+
+
+DO ./textures/wall.xpm
+F               140       ,        140 ,    140
+
+
+
+C 55    ,       198   ,  255
                                   111111
        111111                     100001
        100001                     100001111111111

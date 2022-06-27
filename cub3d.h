@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/27 12:26:33 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/27 12:43:28 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <math.h>
 
-# define TEX 6
+# define TEX 7
 
 # ifdef __linux__
 // Linux
@@ -186,6 +186,10 @@ void	c3d_init_sprite(void *mlx, t_image *image);
 void	c3d_draw_bg(t_data *cub);
 void	c3d_draw_square(t_data *cub);
 void	c3d_draw_px(t_image *img, int x, int y, int color);
+
+/* c3d_draw_minimap.c */
+void	c3d_draw_map(t_data *cub);
+void	c3d_init_minimap(t_data *cub);
 
 /**********************/
 /*** ERROR CHECKING ***/
