@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:00:54 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/27 11:01:34 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/27 11:40:10 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	c3d_load_tex(t_data *data)
 	int	fd;
 
 	i = 0;
-	while (i < TEX)
+	while (i < TEX - 1)
 	{
 		fd = open(data->images[i].path, O_RDONLY);
 		c3d_init_sprite(data->mlx.mlx, &data->images[i]);

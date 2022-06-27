@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/27 11:17:38 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/27 12:26:33 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <math.h>
 
-# define TEX 5
+# define TEX 6
 
 # ifdef __linux__
 // Linux
@@ -84,10 +84,10 @@ typedef struct s_image
 {
 	void	*img;
 	char	*data;
-	char	*path;
 	int		bpp;
 	int		line_size;
 	int		endian;
+	char	*path;
 	int		size_x;
 	int		size_y;
 }	t_image;
@@ -146,6 +146,15 @@ enum e_error
 	MAP_INVALID,
 };
 
+typedef struct s_bg
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		x;
+	int		endian;
+}	t_bg;
+
 /**********************/
 /*** INITIALISATION ***/
 /**********************/
@@ -169,6 +178,14 @@ int		c3d_create_trgb(int t, int r, int g, int b);
 void	c3d_init_save_tex_path(t_data *cub, char *elem);
 void	c3d_load_tex(t_data *data);
 void	c3d_init_sprite(void *mlx, t_image *image);
+
+/**********************/
+/****** DAW MAZE ******/
+/**********************/
+/* c3d_draw_bg.c */
+void	c3d_draw_bg(t_data *cub);
+void	c3d_draw_square(t_data *cub);
+void	c3d_draw_px(t_image *img, int x, int y, int color);
 
 /**********************/
 /*** ERROR CHECKING ***/
