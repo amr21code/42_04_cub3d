@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:50:26 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/27 11:22:25 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/28 13:40:40 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	c3d_destructor(t_data *cub)
 	c3d_free_array(cub->map.map);
 	// c3d_single_desctruct(cub->map.path);
 	c3d_free_images(cub);
-	while (i < TEX)
+	while (i < TEX - 2)
 	{
 		c3d_single_desctruct(cub->images[i].path);
 		i++;

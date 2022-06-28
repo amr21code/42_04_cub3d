@@ -6,21 +6,11 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 12:24:01 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/27 12:26:37 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/28 10:40:53 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	c3d_draw_px(t_image *img, int x, int y, int color)
-{
-	int		offset;
-	char	*px;
-
-	offset = y * img->size_x + x * (img->bpp / 8);
-	px = img->data + offset;
-	*(unsigned int *)px = color;
-}
 
 void	c3d_draw_square(t_data *cub)
 {

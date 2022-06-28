@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 12:31:30 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/27 12:56:32 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/28 10:39:14 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,6 @@ void	c3d_draw_map(t_data *cub)
 			{
 				c3d_draw_minimap_dot(cub, i * 4, j * 4);
 			}
-			// else if (cub->map.map[i][j] == '')
-			// {
-			// 	cub->player.x = j;
-			// 	cub->player.y = i;
-			// }
 			j++;
 		}
 		i++;

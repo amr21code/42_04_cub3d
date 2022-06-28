@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/27 12:43:28 by anruland         ###   ########.fr       */
+/*   Updated: 2022/06/28 13:37:11 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ typedef struct s_image
 
 typedef struct s_vector
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }	t_vector;
 
 typedef struct s_player
@@ -155,6 +155,22 @@ typedef struct s_bg
 	int		endian;
 }	t_bg;
 
+typedef struct s_rays
+{
+	t_vector	pos;
+	t_vector	cplane;
+	t_vector	dir;
+	t_vector	side;
+	t_vector	delta;
+	t_vector	step;
+	double		cam;
+	int			hit;
+	int			wallside;
+	double		ray_len;
+	double		dist;
+	int			wallh;
+}	t_rays;
+
 /**********************/
 /*** INITIALISATION ***/
 /**********************/
@@ -180,16 +196,23 @@ void	c3d_load_tex(t_data *data);
 void	c3d_init_sprite(void *mlx, t_image *image);
 
 /**********************/
-/****** DAW MAZE ******/
+/****** DRAW MAZE *****/
 /**********************/
+/* c3d_draw.c */
+void	c3d_draw_px(t_image *img, int x, int y, int color);
+void	c3d_draw_col(t_data *cub, int x, int height);
+
 /* c3d_draw_bg.c */
 void	c3d_draw_bg(t_data *cub);
 void	c3d_draw_square(t_data *cub);
-void	c3d_draw_px(t_image *img, int x, int y, int color);
 
 /* c3d_draw_minimap.c */
 void	c3d_draw_map(t_data *cub);
 void	c3d_init_minimap(t_data *cub);
+
+/* c3d_raycast.c */
+int		c3d_calc_wallheight(t_data *cub, double len_ray);
+void	c3d_raycast(t_data *cub);
 
 /**********************/
 /*** ERROR CHECKING ***/
@@ -220,5 +243,12 @@ void	c3d_single_desctruct(void *str);
 void	c3d_pre_destructor(int fd, char *line, char *rd, int error);
 int		c3d_destructor(t_data *cub);
 void	c3d_free_array(char **argv);
+
+/**********************/
+/******* MISC *********/
+/**********************/
+/* c3d_math.c */
+double	c3d_abs(double nbr);
+double	c3d_div(double num, double denom);
 
 #endif
