@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 10:57:53 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/04 14:11:13 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/07/04 15:55:05 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ void	c3d_save_map(t_data *cub, char *line, int y)
 			else if (line[i] == 'W')
 				cub->player.view.x = -1;
 			else if (line[i] == 'N')
-				cub->player.view.y = 1;
-			else if (line[i] == 'S')
 				cub->player.view.y = -1;
+			else if (line[i] == 'S')
+				cub->player.view.y = 1;
 		}
 		i++;
 	}

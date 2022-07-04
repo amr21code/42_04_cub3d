@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:50:01 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/04 15:04:56 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/04 15:54:23 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	c3d_raycast(t_data *cub)
 	t_rays	ray;
 
 	i = 0;
-	ray.cplane.x = 0;
-	ray.cplane.y = 0.66;
+	ray.cplane.x = 0.66 * cub->player.view.y;
+	ray.cplane.y = 0.66 * cub->player.view.x;
 	c3d_init_rays(&ray);
 	while (i < cub->mlx.width)
 	{
@@ -63,6 +63,7 @@ void	c3d_raycast(t_data *cub)
 			ray.step.y = 1;
 			ray.side.y = (ray.pos.y + 1.0 - cub->player.pos.y) * ray.delta.y;
 		}
+		printf("i %d TEST ray dir x %f, y %f\n", i, ray.delta.x, ray.dir.x);
 		// init end
 		// algo start
 		while (ray.hit == 0)
@@ -83,15 +84,15 @@ void	c3d_raycast(t_data *cub)
 			if (cub->map.map[(int)ray.pos.y][(int)ray.pos.x] == '1')
 				ray.hit = 1;
 		}
-		printf("i %d TEST side %f, delta %f\n", i, ray.side.y, ray.delta.y);
-		printf("i %d TEST side %f, delta %f\n", i, ray.side.x, ray.delta.x);
+		// printf("i %d TEST side %f, delta %f\n", i, ray.side.y, ray.delta.y);
+		// printf("i %d TEST side %f, delta %f\n", i, ray.side.x, ray.delta.x);
 		if (ray.wallside == 0)
 			ray.dist = (ray.side.x - ray.delta.x);
 		else
 			ray.dist = (ray.side.y - ray.delta.y);
 		// algo end
 		ray.wallh = c3d_calc_wallheight(cub, ray.dist);
-		printf("i %d TEST wallh %d\n", i, ray.wallh);
+		// printf("i %d TEST wallh %d\n", i, ray.wallh);
 		c3d_draw_col(cub, i, ray.wallh);
 		i++;
 	}
