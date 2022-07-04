@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_config.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 10:59:10 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/27 10:59:54 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/04 14:08:56 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/**
+ * @brief inits the textures and colors
+ * 
+ * @param cub 
+ * @param rd 
+ */
 void	c3d_init_config_elem(t_data *cub, char *rd)
 {
 	char	*tmp;
@@ -33,6 +39,12 @@ void	c3d_init_config_elem(t_data *cub, char *rd)
 	}
 }
 
+/**
+ * @brief saves the colors in the struct cub
+ * 
+ * @param cub 
+ * @param elem 
+ */
 void	c3d_init_save_colors(t_data *cub, char *elem)
 {
 	int		fc;
@@ -53,6 +65,15 @@ void	c3d_init_save_colors(t_data *cub, char *elem)
 		cub->color_floor = c3d_create_trgb(255, c.r, c.g, c.b);
 }
 
+/**
+ * @brief converts rgb color in hex-color
+ * 
+ * @param t 
+ * @param r 
+ * @param g 
+ * @param b 
+ * @return int 
+ */
 int	c3d_create_trgb(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);

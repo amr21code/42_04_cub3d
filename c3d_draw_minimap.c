@@ -3,15 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_draw_minimap.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 12:31:30 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/28 10:39:14 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/04 14:00:49 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/**
+ * @brief draws one point of the minimap
+ * 
+ * @param cub 
+ * @param y 
+ * @param x 
+ */
 void	c3d_draw_minimap_dot(t_data *cub, int y, int x)
 {
 	int		i;
@@ -30,6 +37,11 @@ void	c3d_draw_minimap_dot(t_data *cub, int y, int x)
 	}
 }
 
+/**
+ * @brief inits the minimap image
+ * 
+ * @param cub 
+ */
 void	c3d_init_minimap(t_data *cub)
 {
 	cub->images[6].img = mlx_new_image(cub->mlx.mlx, \
@@ -41,6 +53,11 @@ void	c3d_init_minimap(t_data *cub)
 		cub->images[6].img, 0, 0);
 }
 
+/**
+ * @brief draws the minimap
+ * 
+ * @param cub 
+ */
 void	c3d_draw_map(t_data *cub)
 {
 	int	i;

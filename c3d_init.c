@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:11:05 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/27 11:20:25 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/04 14:14:27 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/**
+ * @brief inits the preerror struct
+ * 
+ * @param check 
+ */
 void	c3d_init_preerr(t_preerr *check)
 {
 		check->no = 0;
@@ -29,6 +34,11 @@ void	c3d_init_preerr(t_preerr *check)
 		check->b = 0;
 }
 
+/**
+ * @brief inits the cub struct
+ * 
+ * @param cub 
+ */
 void	c3d_init_struct(t_data *cub)
 {
 	cub->color_ceilling = 0;
@@ -43,6 +53,12 @@ void	c3d_init_struct(t_data *cub)
 	cub->mlx.height = 768;
 }
 
+/**
+ * @brief inits cub struct
+ * 
+ * @param cub 
+ * @param path 
+ */
 void	c3d_init_cub(t_data *cub, char *path)
 {
 	c3d_init_struct(cub);
@@ -50,6 +66,12 @@ void	c3d_init_cub(t_data *cub, char *path)
 	c3d_init_map(cub, path);
 }
 
+/**
+ * @brief inits config element in cub struct
+ * 
+ * @param cub 
+ * @param path 
+ */
 void	c3d_init_config(t_data *cub, char *path)
 {
 	int		fd;
@@ -67,6 +89,11 @@ void	c3d_init_config(t_data *cub, char *path)
 	close(fd);
 }
 
+/**
+ * @brief inits mlx window
+ * 
+ * @param data 
+ */
 void	c3d_init_win(t_data *data)
 {
 	data->mlx.width = 1024;

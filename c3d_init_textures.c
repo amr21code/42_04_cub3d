@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_textures.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:00:54 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/27 12:33:27 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/04 14:12:59 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/**
+ * @brief saves the texture path in the struct cub
+ * 
+ * @param cub 
+ * @param elem 
+ */
 void	c3d_init_save_tex_path(t_data *cub, char *elem)
 {
 	char	*tex_idx;
@@ -32,6 +38,11 @@ void	c3d_init_save_tex_path(t_data *cub, char *elem)
 	}
 }
 
+/**
+ * @brief loads texture in image in struct data
+ * 
+ * @param data 
+ */
 void	c3d_load_tex(t_data *data)
 {
 	int	i;
@@ -49,6 +60,12 @@ void	c3d_load_tex(t_data *data)
 	}
 }
 
+/**
+ * @brief converts xpm file in mlx image
+ * 
+ * @param mlx 
+ * @param image 
+ */
 void	c3d_init_sprite(void *mlx, t_image *image)
 {
 	image->img = mlx_xpm_file_to_image(mlx, image->path,

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_error_checks.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:35:11 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/24 12:51:21 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/04 14:06:59 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ int	c3d_check_config_elem(char *path)
 	return (check.start_line);
 }
 
+/**
+ * @brief checks if the map is valid
+ * 
+ * @param start 
+ * @param path 
+ */
 void	c3d_check_map(int start, char *path)
 {
 	int			fd;

@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_raycast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:50:01 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/28 14:07:28 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/04 14:16:03 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/**
+ * @brief inits ray struct
+ * 
+ * @param ray 
+ */
 void	c3d_init_rays(t_rays *ray)
 {
 	ray->hit = 0;
@@ -91,6 +96,13 @@ void	c3d_raycast(t_data *cub)
 	}
 }
 
+/**
+ * @brief calculates wall height
+ * 
+ * @param cub 
+ * @param len_ray 
+ * @return int 
+ */
 int	c3d_calc_wallheight(t_data *cub, double len_ray)
 {
 	int	wallh;

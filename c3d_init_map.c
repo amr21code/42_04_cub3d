@@ -3,15 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 10:57:53 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/27 11:01:58 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/04 14:11:13 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/**
+ * @brief saves one line of the map and the player position in the struct 
+ *  
+ * @param cub 
+ * @param line 
+ * @param y 
+ */
 void	c3d_save_map(t_data *cub, char *line, int y)
 {
 	int		i;
@@ -39,6 +46,12 @@ void	c3d_save_map(t_data *cub, char *line, int y)
 	}
 }
 
+/**
+ * @brief inits and allocates map
+ * 
+ * @param cub 
+ * @param path 
+ */
 void	c3d_init_map(t_data *cub, char *path)
 {
 	int		fd;

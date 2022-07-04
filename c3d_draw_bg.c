@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_draw_bg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 12:24:01 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/28 10:40:53 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/04 13:59:13 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/**
+ * @brief draws upper half of the window in ceiling color and the lower half in floor color
+ * 
+ * @param cub 
+ */
 void	c3d_draw_square(t_data *cub)
 {
 	int		i;
@@ -40,6 +45,11 @@ void	c3d_draw_square(t_data *cub)
 	}
 }
 
+/**
+ * @brief initialisies the maze images and draws the background
+ * 
+ * @param cub 
+ */
 void	c3d_draw_bg(t_data *cub)
 {
 	cub->images[5].img = mlx_new_image(cub->mlx.mlx, \

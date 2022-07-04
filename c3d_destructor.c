@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_destructor.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:50:26 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/28 13:40:40 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/04 13:57:04 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,14 @@ void	c3d_free_array(char **argv)
 	c3d_single_desctruct((void *)argv);
 }
 
+/**
+ * @brief frees the memory allocated for the error check
+ * 
+ * @param fd 
+ * @param line 
+ * @param rd 
+ * @param error 
+ */
 void	c3d_pre_destructor(int fd, char *line, char *rd, int error)
 {
 	if (error == 0)
@@ -59,6 +67,11 @@ void	c3d_pre_destructor(int fd, char *line, char *rd, int error)
 		ft_printerror("Error\nUnknown");
 }
 
+/**
+ * @brief frees the data saved in data->images
+ * 
+ * @param data 
+ */
 void	c3d_free_images(t_data *data)
 {
 	int	i;
@@ -73,6 +86,12 @@ void	c3d_free_images(t_data *data)
 	}
 }
 
+/**
+ * @brief frees everything saved in the struct cub
+ * 
+ * @param cub 
+ * @return int 
+ */
 int	c3d_destructor(t_data *cub)
 {
 	int	i;

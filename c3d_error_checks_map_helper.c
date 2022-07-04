@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_error_checks_map_helper.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:11:06 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/23 15:43:38 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/04 14:06:26 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/**
+ * @brief checks that the characters in line are space or 1
+ * 
+ * @param line 
+ * @return int 
+ */
 int	c3d_first_last(char *line)
 {
 	int	i;
@@ -30,6 +36,12 @@ int	c3d_first_last(char *line)
 	return (0);
 }
 
+/**
+ * @brief checks that the character c is a valid map character
+ * 
+ * @param c 
+ * @return int 
+ */
 int	c3d_valid_map_char(char c)
 {
 	if (!ft_char_in_str(" NSWDE10", c))
@@ -39,6 +51,14 @@ int	c3d_valid_map_char(char c)
 	return (0);
 }
 
+/**
+ * @brief checks that the characters around a space in the map are space or 1
+ * 
+ * @param line 
+ * @param prev 
+ * @param i 
+ * @return int 
+ */
 int	c3d_check_surroundings(char *line, char *prev, int i)
 {
 	int	len;
@@ -61,6 +81,14 @@ int	c3d_check_surroundings(char *line, char *prev, int i)
 	return (0);
 }
 
+/**
+ * @brief adds spaces at the end of the shorter line
+ *  until they have the same length
+ * 
+ * @param check 
+ * @param comp 
+ * @return char* 
+ */
 char	*c3d_unify_map_len(char *check, char *comp)
 {
 	int		len;
@@ -78,6 +106,14 @@ char	*c3d_unify_map_len(char *check, char *comp)
 	return (check);
 }
 
+/**
+ * @brief checks if the line includes only valid characters and 
+ * that the walls are closed
+ * 
+ * @param prev 
+ * @param line 
+ * @return int 
+ */
 int	c3d_check_line(char *prev, char *line)
 {
 	int	i;
