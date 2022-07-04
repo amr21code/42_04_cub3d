@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_raycast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:50:01 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/04 14:16:03 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/07/04 15:04:56 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
  */
 void	c3d_init_rays(t_rays *ray)
 {
-	ray->hit = 0;
 	ray->ray_len = 0;
 	ray->wallh = 0;
 }
@@ -33,9 +32,10 @@ void	c3d_raycast(t_data *cub)
 	ray.cplane.x = 0;
 	ray.cplane.y = 0.66;
 	c3d_init_rays(&ray);
-	while (i < cub->mlx.width - 1)
+	while (i < cub->mlx.width)
 	{
 		// init start
+		ray.hit = 0;
 		ray.pos.x = cub->player.pos.x;
 		ray.pos.y = cub->player.pos.y;
 		ray.cam = 2 * i / (double)cub->mlx.width - 1;
@@ -91,6 +91,7 @@ void	c3d_raycast(t_data *cub)
 			ray.dist = (ray.side.y - ray.delta.y);
 		// algo end
 		ray.wallh = c3d_calc_wallheight(cub, ray.dist);
+		printf("i %d TEST wallh %d\n", i, ray.wallh);
 		c3d_draw_col(cub, i, ray.wallh);
 		i++;
 	}
@@ -107,6 +108,7 @@ int	c3d_calc_wallheight(t_data *cub, double len_ray)
 {
 	int	wallh;
 
-	wallh = cub->images[0].size_y / (int)(len_ray * 512);
+	// wallh = cub->images[0].size_y / (int)len_ray * 277;
+	wallh = (int)(cub->mlx.height / len_ray);
 	return (wallh);
 }
