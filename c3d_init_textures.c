@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_textures.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:00:54 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/04 14:12:59 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:41:58 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,6 @@ void	c3d_init_sprite(void *mlx, t_image *image)
 {
 	image->img = mlx_xpm_file_to_image(mlx, image->path,
 			&image->size_x, &image->size_y);
+	image->data = mlx_get_data_addr(image->img, &image->bpp,
+			&image->line_size, &image->endian);
 }

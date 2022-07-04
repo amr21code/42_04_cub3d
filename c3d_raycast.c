@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:50:01 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/04 15:54:23 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:18:49 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
  * 
  * @param ray 
  */
-void	c3d_init_rays(t_rays *ray)
+void	c3d_init_rays(t_rays *ray, t_data *cub)
 {
 	ray->ray_len = 0;
 	ray->wallh = 0;
+	ray->texnum = 0;
+	ray->tex_size = cub->images[0].size_x;
 }
 
 void	c3d_raycast(t_data *cub)
@@ -31,7 +33,7 @@ void	c3d_raycast(t_data *cub)
 	i = 0;
 	ray.cplane.x = 0.66 * cub->player.view.y;
 	ray.cplane.y = 0.66 * cub->player.view.x;
-	c3d_init_rays(&ray);
+	c3d_init_rays(&ray, cub);
 	while (i < cub->mlx.width)
 	{
 		// init start
@@ -63,7 +65,7 @@ void	c3d_raycast(t_data *cub)
 			ray.step.y = 1;
 			ray.side.y = (ray.pos.y + 1.0 - cub->player.pos.y) * ray.delta.y;
 		}
-		printf("i %d TEST ray dir x %f, y %f\n", i, ray.delta.x, ray.dir.x);
+		// printf("i %d TEST ray dir x %f, y %f\n", i, ray.delta.x, ray.dir.x);
 		// init end
 		// algo start
 		while (ray.hit == 0)
@@ -87,13 +89,26 @@ void	c3d_raycast(t_data *cub)
 		// printf("i %d TEST side %f, delta %f\n", i, ray.side.y, ray.delta.y);
 		// printf("i %d TEST side %f, delta %f\n", i, ray.side.x, ray.delta.x);
 		if (ray.wallside == 0)
+		{
 			ray.dist = (ray.side.x - ray.delta.x);
+			ray.wallx = ray.pos.y + ray.dist * ray.dir.y;
+		}
 		else
+		{
 			ray.dist = (ray.side.y - ray.delta.y);
+			ray.wallx = ray.pos.x + ray.dist * ray.dir.x;
+		}
+		ray.wallx -= (int)ray.wallx;
+		ray.tex_x = (int)(ray.wallx * (double)ray.tex_size);
+		if ((ray.wallside == 0 && ray.dir.x > 0)
+			|| (ray.wallside == 1 && ray.dir.y < 0))
+			ray.tex_x = ray.tex_size - ray.tex_x - 1;
+		ray.tex_step = 1.0 * ray.tex_x / ray.wallh;
+		// printf("i %d TEST wallh %d\n", i, ray.tex_x);
 		// algo end
 		ray.wallh = c3d_calc_wallheight(cub, ray.dist);
 		// printf("i %d TEST wallh %d\n", i, ray.wallh);
-		c3d_draw_col(cub, i, ray.wallh);
+		c3d_draw_col(cub, i, ray.wallh, ray);
 		i++;
 	}
 }

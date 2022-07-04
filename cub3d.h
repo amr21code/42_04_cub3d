@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/06/28 13:37:11 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:53:37 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ enum e_tex
 
 typedef struct s_color
 {
+	int	t;
 	int	r;
 	int	g;
 	int	b;
@@ -169,6 +170,13 @@ typedef struct s_rays
 	double		ray_len;
 	double		dist;
 	int			wallh;
+	int			texnum;
+	double		wallx;
+	int			tex_x;
+	int			tex_y;
+	int			tex_size;
+	double		tex_step;
+	double		tex_pos;
 }	t_rays;
 
 /**********************/
@@ -200,7 +208,7 @@ void	c3d_init_sprite(void *mlx, t_image *image);
 /**********************/
 /* c3d_draw.c */
 void	c3d_draw_px(t_image *img, int x, int y, int color);
-void	c3d_draw_col(t_data *cub, int x, int height);
+void	c3d_draw_col(t_data *cub, int x, int height, t_rays ray);
 
 /* c3d_draw_bg.c */
 void	c3d_draw_bg(t_data *cub);
