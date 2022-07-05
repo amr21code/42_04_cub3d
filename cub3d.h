@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/04 18:53:37 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/05 15:01:59 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ enum e_tex
 
 typedef struct s_color
 {
-	int	t;
-	int	r;
-	int	g;
-	int	b;
+	unsigned int	t;
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
 }	t_color;
 
 typedef struct s_mlx
