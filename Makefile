@@ -6,7 +6,7 @@
 #    By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/20 15:14:15 by anruland          #+#    #+#              #
-#    Updated: 2022/06/28 13:34:35 by anruland         ###   ########.fr        #
+#    Updated: 2022/07/05 18:17:02 by anruland         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ SRC		=	main.c \
 			c3d_draw_minimap.c \
 			c3d_math.c \
 			c3d_raycast.c \
-			c3d_draw.c
+			c3d_draw.c \
+			c3d_input.c
 
 
 # Mac or Linux?

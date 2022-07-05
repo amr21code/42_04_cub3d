@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:40:45 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/05 15:18:37 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/05 18:19:25 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	c3d_draw_col(t_data *cub, int x, int height, t_rays ray)
 
 	ray.tex_pos = 0.0;
 	i = cub->mlx.height / 2 - height / 2;
-		printf("%d\n", cub->images[0].bpp);
+		// printf("%d\n", cub->images[0].bpp);
 	while (i < cub->mlx.height / 2 + height / 2)
 	{
 		// printf("i %d x %d tex_y %d step %f tex_x %d\n", i, x, ray.tex_y, ray.tex_step, ray.tex_x);

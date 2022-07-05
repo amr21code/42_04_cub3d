@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/05 15:01:59 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/05 18:27:56 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,6 +221,15 @@ void	c3d_init_minimap(t_data *cub);
 /* c3d_raycast.c */
 int		c3d_calc_wallheight(t_data *cub, double len_ray);
 void	c3d_raycast(t_data *cub);
+
+/**********************/
+/*** INPUT CHECKING ***/
+/**********************/
+/* c3d_input.c */
+int		c3d_check_move(t_data *cub, int x, int y);
+void	c3d_turn(t_data *cub, double deg);
+void	c3d_move(t_data *cub, int x, int y);
+int		c3d_input(int keycode, t_data *cub);
 
 /**********************/
 /*** ERROR CHECKING ***/
