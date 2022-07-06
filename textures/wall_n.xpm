@@ -1,5 +1,5 @@
 /* XPM */
-static char *_3d426ece602402eddce7f166822ddb6fu9vohHMqc4PSVo1[] = {
+static char *greystone[] = {
 /* columns rows colors chars-per-pixel */
 "64 64 22 1 ",
 "  c gray12",

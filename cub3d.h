@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/05 18:27:56 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/06 16:45:30 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,7 @@ typedef struct s_rays
 	int			tex_size;
 	double		tex_step;
 	double		tex_pos;
+	int			tex_idx;
 }	t_rays;
 
 /**********************/

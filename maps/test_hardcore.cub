@@ -1,11 +1,11 @@
-NO          ./textures/wall.xpm
-SO ./textures/wall.xpm
-                 WE ./textures/wall.xpm
-EA                       ./textures/wall.xpm
+NO          ./textures/wall_n.xpm
+SO ./textures/wall_s.xpm
+                 WE ./textures/wall_w.xpm
+EA                       ./textures/wall_e.xpm
 
 
 
-DO ./textures/wall.xpm
+DO ./textures/door.xpm
 F               140       ,        140 ,    140
 
 
