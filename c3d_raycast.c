@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:50:01 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/05 14:40:33 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/06 16:16:00 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,13 +100,15 @@ void	c3d_raycast(t_data *cub)
 		}
 		ray.wallx -= (int)ray.wallx;
 		ray.tex_x = (int)(ray.wallx * (double)ray.tex_size);
+		// printf("wallx %f - texx %d - texsize %d\n", ray.wallx, ray.tex_x, ray.tex_size);
 		if ((ray.wallside == 0 && ray.dir.x > 0)
 			|| (ray.wallside == 1 && ray.dir.y < 0))
 			ray.tex_x = ray.tex_size - ray.tex_x - 1;
-		ray.tex_step = 1.0 * ray.tex_x / ray.wallh;
+		ray.wallh = c3d_calc_wallheight(cub, ray.dist);
+		ray.tex_step = (double)ray.tex_size / (double)ray.wallh;
+		// printf("pos %d - texy %d - step %f\n", ray.wallh, ray.tex_x, ray.tex_step);
 		// printf("i %d TEST wallh %d\n", i, ray.tex_x);
 		// algo end
-		ray.wallh = c3d_calc_wallheight(cub, ray.dist);
 		// printf("i %d TEST wallh %d\n", i, ray.wallh);
 		c3d_draw_col(cub, i, ray.wallh, ray);
 		i++;
