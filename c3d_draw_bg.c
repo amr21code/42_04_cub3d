@@ -6,14 +6,15 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 12:24:01 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/05 18:34:01 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/07 17:08:14 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 /**
- * @brief draws upper half of the window in ceiling color and the lower half in floor color
+ * @brief draws upper half of the window in ceiling color and the
+ * lower half in floor color
  * 
  * @param cub 
  */
