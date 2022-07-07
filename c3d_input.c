@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 17:49:15 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/07 14:39:15 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/07 15:33:29 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	c3d_input(int keycode, t_data *cub)
 		c3d_turn(cub, 1);
 	else if (keycode == KEY_ARR_RIGHT)
 		c3d_turn(cub, -1);
-	// else if (keycode == SPACE)
-	// 	c3d_open_door(cub);
+	else if (keycode == SPACE)
+		c3d_open_door(cub);
 	c3d_draw_square(cub);
 	c3d_raycast(cub);
 	mlx_put_image_to_window(cub->mlx.mlx, cub->mlx.win, \
@@ -39,17 +39,24 @@ int	c3d_input(int keycode, t_data *cub)
 	return (0);
 }
 
-// void	c3d_open_door(t_data *cub)
-// {
-// 	if (c3d_check_move(cub, cub->player.view.x, cub->player.view.y) == 2)
-// 		cub->map.map[]
-// }
+void	c3d_open_door(t_data *cub)
+{
+	if (c3d_check_move(cub, cub->player.view.x, cub->player.view.y) == 2)
+		cub->map.map[(int)(cub->player.pos.y + cub->player.view.y)]\
+			[(int)(cub->player.pos.x + cub->player.view.x)] = 'd';
+	else if (c3d_check_move(cub, cub->player.view.x, cub->player.view.y) == 3)
+		cub->map.map[(int)(cub->player.pos.y + cub->player.view.y)]\
+			[(int)(cub->player.pos.x + cub->player.view.x)] = 'D';
+}
 
 void	c3d_move(t_data *cub, double x, double y)
 {
+	int	check;
+
 	x = x * cub->player.step;
 	y = y * cub->player.step;
-	if (c3d_check_move(cub, x, y))
+	check = c3d_check_move(cub, x, y);
+	if (check ==1 || check == 3)
 	{
 		cub->player.pos.x += x;
 		cub->player.pos.y += y;

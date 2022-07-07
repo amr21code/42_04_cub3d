@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:50:01 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/07 14:53:40 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/07 15:24:31 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ void	c3d_raycast(t_data *cub)
 			}
 			if (cub->map.map[(int)ray.pos.y][(int)ray.pos.x] == '1')
 				ray.hit = 1;
+			else if (cub->map.map[(int)ray.pos.y][(int)ray.pos.x] == 'D')
+				ray.hit = 2;
 		}
 		if (ray.wallside == 0)
 		{
@@ -102,6 +104,8 @@ void	c3d_raycast(t_data *cub)
 			else
 				ray.tex_idx = S;
 		}
+		if (ray.hit == 2)
+			ray.tex_idx = D;
 		ray.wallx -= (int)ray.wallx;
 		ray.tex_x = (int)(ray.wallx * (double)ray.tex_size);
 		if ((ray.wallside == 0 && ray.dir.x > 0)

@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/07 14:47:35 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/07 15:28:23 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,6 +234,7 @@ int		c3d_check_move(t_data *cub, double x, double y);
 void	c3d_turn(t_data *cub, double deg);
 void	c3d_move(t_data *cub, double x, double y);
 int		c3d_input(int keycode, t_data *cub);
+void	c3d_open_door(t_data *cub);
 
 /**********************/
 /*** ERROR CHECKING ***/
