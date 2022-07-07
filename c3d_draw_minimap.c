@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_draw_minimap.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 12:31:30 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/04 14:00:49 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:06:05 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * @param y 
  * @param x 
  */
-void	c3d_draw_minimap_dot(t_data *cub, int y, int x)
+void	c3d_draw_minimap_dot(t_data *cub, int y, int x, int color)
 {
 	int		i;
 	int		j;
@@ -30,7 +30,7 @@ void	c3d_draw_minimap_dot(t_data *cub, int y, int x)
 		j = 0;
 		while (j < 4)
 		{
-			c3d_draw_px(&cub->images[6], j + x, i + y, 0xFFAAAAAA);
+			c3d_draw_px(&cub->images[6], j + x, i + y, color);
 			j++;
 		}
 		i++;
@@ -71,8 +71,14 @@ void	c3d_draw_map(t_data *cub)
 		{
 			if (cub->map.map[i][j] == '1')
 			{
-				c3d_draw_minimap_dot(cub, i * 4, j * 4);
+				c3d_draw_minimap_dot(cub, i * 4, j * 4, 0xFFAAAAAA);
 			}
+			else if (cub->map.map[i][j] == 'P')
+			{
+				c3d_draw_minimap_dot(cub, i * 4, j * 4, 0xFFFF0000);
+			}
+			else
+				c3d_draw_minimap_dot(cub, i * 4, j * 4, 0xFF000000);
 			j++;
 		}
 		i++;

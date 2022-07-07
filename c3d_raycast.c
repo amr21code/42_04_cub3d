@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:50:01 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/07 15:24:31 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:38:08 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	c3d_raycast(t_data *cub)
 	t_rays	ray;
 
 	i = 0;
-	ray.cplane.x = 0.66 * cub->player.view.y;
+	ray.cplane.x = 0.66 * cub->player.view.y * -1;
 	ray.cplane.y = 0.66 * cub->player.view.x;
 	c3d_init_rays(&ray, cub);
 	while (i < cub->mlx.width)

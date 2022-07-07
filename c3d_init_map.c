@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 10:57:53 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/07 14:56:26 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/07 15:58:51 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	c3d_save_map(t_data *cub, char *line, int y)
 				cub->player.view.y = -1;
 			else if (line[i] == 'S')
 				cub->player.view.y = 1;
+			line[i] = 'P';
 		}
 		i++;
 	}
