@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:50:01 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/06 17:33:35 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/07 14:53:40 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	c3d_raycast(t_data *cub)
 	{
 		// init start
 		ray.hit = 0;
-		ray.pos.x = cub->player.pos.x;
-		ray.pos.y = cub->player.pos.y;
+		ray.pos.x = (int)cub->player.pos.x;
+		ray.pos.y = (int)cub->player.pos.y;
 		ray.cam = 2 * i / (double)cub->mlx.width - 1;
 		ray.dir.x = cub->player.view.x + ray.cplane.x * ray.cam;
 		ray.dir.y = cub->player.view.y + ray.cplane.y * ray.cam;
@@ -108,7 +108,7 @@ void	c3d_raycast(t_data *cub)
 			|| (ray.wallside == 1 && ray.dir.y < 0))
 			ray.tex_x = ray.tex_size - ray.tex_x - 1;
 		ray.wallh = c3d_calc_wallheight(cub, ray.dist);
-		ray.tex_step = (double)ray.tex_size / (double)ray.wallh;
+		ray.tex_step = (double)ray.tex_size / ray.wallh;
 		// algo end
 		c3d_draw_col(cub, i, ray.wallh, ray);
 		i++;
@@ -122,10 +122,10 @@ void	c3d_raycast(t_data *cub)
  * @param len_ray 
  * @return int 
  */
-int	c3d_calc_wallheight(t_data *cub, double len_ray)
+double	c3d_calc_wallheight(t_data *cub, double len_ray)
 {
-	int	wallh;
+	double	wallh;
 
-	wallh = (int)(cub->mlx.height / len_ray);
+	wallh = (cub->mlx.height / len_ray);
 	return (wallh);
 }

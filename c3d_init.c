@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:11:05 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/04 14:14:27 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/07/07 15:06:02 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	c3d_init_struct(t_data *cub)
 	cub->player.pos.y = 0;
 	cub->player.view.x = 0;
 	cub->player.view.y = 0;
+	cub->player.step = 0.2;
 	cub->map.size_x = 0;
 	cub->map.size_y = 0;
 	cub->mlx.width = 1024;

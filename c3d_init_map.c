@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 10:57:53 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/06 17:09:40 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/07 14:56:26 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	c3d_save_map(t_data *cub, char *line, int y)
 			cub->map.map[y][i] = line[i];
 		if (!ft_char_in_str(" 01D\n", line[i]))
 		{
-			cub->player.pos.x = i;
-			cub->player.pos.y = y;
+			cub->player.pos.x = i + 0.5;
+			cub->player.pos.y = y + 0.5;
 			if (line[i] == 'E')
 				cub->player.view.x = 1;
 			else if (line[i] == 'W')

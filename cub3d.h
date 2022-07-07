@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/06 16:45:30 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/07 14:47:35 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ enum e_keys
 	KEY_W = 119,
 	KEY_ARR_LEFT = 65363,
 	KEY_ARR_RIGHT = 65361,
-	KEY_ESCAPE = 65307
+	KEY_ESCAPE = 65307,
+	SPACE = 32
 };
 # else
 // Mac
@@ -44,7 +45,8 @@ enum e_keys
 	KEY_W = 13,
 	KEY_ARR_LEFT = 123,
 	KEY_ARR_RIGHT = 124,
-	KEY_ESCAPE = 53
+	KEY_ESCAPE = 53,
+	SPACE = 49
 };
 # endif
 
@@ -103,6 +105,7 @@ typedef struct s_player
 {
 	t_vector	pos;
 	t_vector	view;
+	double		step;
 }	t_player;
 
 typedef struct s_data
@@ -169,7 +172,7 @@ typedef struct s_rays
 	int			wallside;
 	double		ray_len;
 	double		dist;
-	int			wallh;
+	double		wallh;
 	int			texnum;
 	double		wallx;
 	int			tex_x;
@@ -220,16 +223,16 @@ void	c3d_draw_map(t_data *cub);
 void	c3d_init_minimap(t_data *cub);
 
 /* c3d_raycast.c */
-int		c3d_calc_wallheight(t_data *cub, double len_ray);
+double	c3d_calc_wallheight(t_data *cub, double len_ray);
 void	c3d_raycast(t_data *cub);
 
 /**********************/
 /*** INPUT CHECKING ***/
 /**********************/
 /* c3d_input.c */
-int		c3d_check_move(t_data *cub, int x, int y);
+int		c3d_check_move(t_data *cub, double x, double y);
 void	c3d_turn(t_data *cub, double deg);
-void	c3d_move(t_data *cub, int x, int y);
+void	c3d_move(t_data *cub, double x, double y);
 int		c3d_input(int keycode, t_data *cub);
 
 /**********************/

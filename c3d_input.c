@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 17:49:15 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/05 18:54:24 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/07 14:39:15 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	c3d_input(int keycode, t_data *cub)
 		c3d_turn(cub, 1);
 	else if (keycode == KEY_ARR_RIGHT)
 		c3d_turn(cub, -1);
+	// else if (keycode == SPACE)
+	// 	c3d_open_door(cub);
 	c3d_draw_square(cub);
 	c3d_raycast(cub);
 	mlx_put_image_to_window(cub->mlx.mlx, cub->mlx.win, \
@@ -37,8 +39,16 @@ int	c3d_input(int keycode, t_data *cub)
 	return (0);
 }
 
-void	c3d_move(t_data *cub, int x, int y)
+// void	c3d_open_door(t_data *cub)
+// {
+// 	if (c3d_check_move(cub, cub->player.view.x, cub->player.view.y) == 2)
+// 		cub->map.map[]
+// }
+
+void	c3d_move(t_data *cub, double x, double y)
 {
+	x = x * cub->player.step;
+	y = y * cub->player.step;
 	if (c3d_check_move(cub, x, y))
 	{
 		cub->player.pos.x += x;
@@ -56,12 +66,16 @@ void	c3d_turn(t_data *cub, double deg)
 	printf("V X %f, Y %f\n", cub->player.view.x, cub->player.view.y);
 }
 
-int	c3d_check_move(t_data *cub, int x, int y)
+int	c3d_check_move(t_data *cub, double x, double y)
 {
-	if (cub->map.map[(int)cub->player.pos.y + y] \
-		[(int)cub->player.pos.x + x] != '1'
-		&& cub->map.map[(int)cub->player.pos.y + y] \
-		[(int)cub->player.pos.x + x] != 'D')
-		return (1);
-	return (0);
+	if (cub->map.map[(int)(cub->player.pos.y + y)] \
+		[(int)(cub->player.pos.x + x)] == '1')
+		return (0);
+	else if (cub->map.map[(int)(cub->player.pos.y + y)] \
+		[(int)(cub->player.pos.x + x)] == 'D')
+		return (2);
+	else if (cub->map.map[(int)(cub->player.pos.y + y)] \
+		[(int)(cub->player.pos.x + x)] == 'd')
+		return (3);
+	return (1);
 }
