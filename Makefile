@@ -6,7 +6,7 @@
 #    By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/20 15:14:15 by anruland          #+#    #+#              #
-#    Updated: 2022/07/05 18:17:02 by anruland         ###   ########.fr        #
+#    Updated: 2022/07/10 17:42:34 by anruland         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC		=	main.c \
 			c3d_init.c \
 			c3d_error_checks.c \
 			c3d_error_checks_helper.c \
+			c3d_error_checks_helper2.c \
 			c3d_error_checks_map_helper.c \
 			c3d_destructor.c \
 			c3d_init_config.c \
@@ -33,7 +34,8 @@ SRC		=	main.c \
 			c3d_math.c \
 			c3d_raycast.c \
 			c3d_draw.c \
-			c3d_input.c
+			c3d_input.c \
+			c3d_move.c
 
 
 # Mac or Linux?

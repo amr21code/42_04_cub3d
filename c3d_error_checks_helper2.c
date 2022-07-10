@@ -6,11 +6,30 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 17:07:02 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/10 17:07:12 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/10 17:41:41 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	c3d_check_colors(char *rd, t_preerr *check, int i)
+{
+	if (c3d_check_string(&rd[i], "0123456789, \n", 0))
+		return (1);
+	check->r = ft_atol(&rd[i]);
+	c3d_check_between_elem(&rd[i], check->r, check);
+	i += ft_strlen_c(&rd[i], ',') + 1;
+	check->g = ft_atol(&rd[i]);
+	c3d_check_between_elem(&rd[i], check->g, check);
+	i += ft_strlen_c(&rd[i], ',') + 1;
+	check->b = ft_atol(&rd[i]);
+	c3d_check_between_elem(&rd[i], check->b, check);
+	if (!(c3d_check_rgb_range(check->r)
+			&& c3d_check_rgb_range(check->g)
+			&& c3d_check_rgb_range(check->b)))
+		return (1);
+	return (0);
+}
 
 /**
  * @brief checks if path or color is correct
@@ -30,23 +49,7 @@ void	c3d_check_config_elem_details(char *rd, t_preerr *check)
 	if (check->invalid != 0)
 		return ;
 	if (rd[i + 1] && rd[i + 1] == ' ')
-	{
-		i += 1;
-		if (c3d_check_string(&rd[i], "0123456789, \n", 0))
-			check->invalid = 1;
-		check->r = ft_atol(&rd[i]);
-		c3d_check_between_elem(&rd[i], check->r, check);
-		i += ft_strlen_c(&rd[i], ',') + 1;
-		check->g = ft_atol(&rd[i]);
-		c3d_check_between_elem(&rd[i], check->g, check);
-		i += ft_strlen_c(&rd[i], ',') + 1;
-		check->b = ft_atol(&rd[i]);
-		c3d_check_between_elem(&rd[i], check->b, check);
-		if (!(c3d_check_rgb_range(check->r)
-				&& c3d_check_rgb_range(check->g)
-				&& c3d_check_rgb_range(check->b)))
-			check->invalid = 1;
-	}
+		check->invalid = c3d_check_colors(rd, check, ++i);
 	else if (ft_char_in_str("NSEWD", rd[i]))
 	{
 		i += 2;
