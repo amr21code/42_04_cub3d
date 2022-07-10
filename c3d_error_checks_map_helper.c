@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_error_checks_map_helper.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:11:06 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/04 14:06:26 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/07/10 17:48:10 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,17 +133,11 @@ int	c3d_check_line(char *prev, char *line)
 				return (MAP_WALLS);
 		}
 		if (line[i] == ' ')
-		{
 			errno = c3d_check_surroundings(line, prev, i);
-			if (errno)
-				return (errno);
-		}
-		if (prev[i] == ' ')
-		{
+		if (prev[i] == ' ' && !errno)
 			errno = c3d_check_surroundings(prev, line, i);
-			if (errno)
-				return (errno);
-		}
+		if (errno)
+			return (errno);
 		i++;
 	}
 	return (0);
