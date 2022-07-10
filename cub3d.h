@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/07 15:28:23 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/10 17:08:28 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,11 +230,14 @@ void	c3d_raycast(t_data *cub);
 /*** INPUT CHECKING ***/
 /**********************/
 /* c3d_input.c */
+int		c3d_input(int keycode, t_data *cub);
+void	c3d_open_door(t_data *cub);
+
+/* c3d_move.c */
+void	c3d_minimap_move(t_data *cub, double x, double y);
 int		c3d_check_move(t_data *cub, double x, double y);
 void	c3d_turn(t_data *cub, double deg);
 void	c3d_move(t_data *cub, double x, double y);
-int		c3d_input(int keycode, t_data *cub);
-void	c3d_open_door(t_data *cub);
 
 /**********************/
 /*** ERROR CHECKING ***/
@@ -247,6 +250,11 @@ int		c3d_check_string(char *rd, char *str, int flag);
 /* c3d_error_checks_helper.c */
 void	c3d_count_config_elem(t_preerr *check, char *found);
 void	c3d_errors_config_elem(t_preerr check);
+int		c3d_check_rgb_range(int color);
+int		c3d_check_between_elem(char *str, int last_nbr, t_preerr *check);
+
+/* c3d_error_checks_helper2.c */
+void	c3d_check_config_elem_details(char *rd, t_preerr *check);
 int		c3d_check_config_elem_line(char *rd, t_preerr *check);
 void	c3d_pre_error_check(int ac, char **av);
 

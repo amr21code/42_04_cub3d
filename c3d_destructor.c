@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_destructor.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:50:26 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/04 13:57:04 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/07/10 17:05:39 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ int	c3d_destructor(t_data *cub)
 
 	i = 0;
 	c3d_free_array(cub->map.map);
-	// c3d_single_desctruct(cub->map.path);
 	c3d_free_images(cub);
 	while (i < TEX - 2)
 	{
