@@ -14,7 +14,7 @@
 
 /**
  * @brief inits ray struct
- * 
+ *  
  * @param ray 
  */
 void	c3d_init_rays(t_rays *ray, t_data *cub)
