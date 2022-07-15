@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/15 11:41:34 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/15 12:25:05 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,6 +247,8 @@ void	c3d_move(t_data *cub, double x, double y);
 int		c3d_check_config_elem(char *path);
 void	c3d_check_map(int start, char *path);
 int		c3d_check_string(char *rd, char *str, int flag);
+char	*c3d_check_map2(t_maperr *check, int fd, int start, char *line);
+void	c3d_check_errno(char *line, char *rd, t_maperr *check);
 
 /* c3d_error_checks_helper.c */
 void	c3d_count_config_elem(t_preerr *check, char *found);

@@ -6,7 +6,7 @@
 /*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:35:11 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/04 14:06:59 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/07/15 12:24:30 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,42 +55,55 @@ void	c3d_check_map(int start, char *path)
 {
 	int			fd;
 	char		*line;
-	char		*rd;
-	int			i;
 	t_maperr	check;
+	char		*rd;
 
 	check.errno = 0;
 	check.players = 0;
-	line = NULL;
 	check.len = ft_linecount(path);
-	i = 0;
+	line = NULL;
 	fd = open(path, O_RDONLY);
-	rd = get_next_line(fd);
-	while (rd)
-	{
-		i++;
-		ft_char_replace(rd, '\n', ' ');
-		if (i == start || i == check.len)
-			c3d_pre_destructor(fd, line, rd, c3d_first_last(rd));
-		if (i > start)
-		{
-			check.players += c3d_check_string(rd, "NSEW", 1);
-			line = c3d_unify_map_len(line, rd);
-			rd = c3d_unify_map_len(rd, line);
-			if (!ft_char_in_str(line, '1') && ft_char_in_str(rd, '1'))
-				check.errno = MAP_INVALID;
-			if (check.errno == 0)
-				check.errno = c3d_check_line(line, rd);
-		}
-		c3d_single_desctruct(line);
-		line = rd;
-		rd = get_next_line(fd);
-	}
+	rd = c3d_check_map2(&check, fd, start, line);
 	if (check.players != 1)
 		check.errno = MAP_PLAYER;
 	c3d_pre_destructor(fd, line, rd, check.errno);
 	close(fd);
 	c3d_single_desctruct(line);
+}
+
+char	*c3d_check_map2(t_maperr *check, int fd, int start, char *line)
+{
+	int		i;
+	char	*rd;
+
+	i = 0;
+	rd = get_next_line(fd);
+	while (rd)
+	{
+		i++;
+		ft_char_replace(rd, '\n', ' ');
+		if (i == start || i == check->len)
+			c3d_pre_destructor(fd, line, rd, c3d_first_last(rd));
+		if (i > start)
+		{
+			check->players += c3d_check_string(rd, "NSEW", 1);
+			line = c3d_unify_map_len(line, rd);
+			rd = c3d_unify_map_len(rd, line);
+			c3d_check_errno(line, rd, check);
+		}
+		c3d_single_desctruct(line);
+		line = rd;
+		rd = get_next_line(fd);
+	}
+	return (rd);
+}
+
+void	c3d_check_errno(char *line, char *rd, t_maperr *check)
+{
+	if (!ft_char_in_str(line, '1') && ft_char_in_str(rd, '1'))
+		check->errno = MAP_INVALID;
+	if (check->errno == 0)
+		check->errno = c3d_check_line(line, rd);
 }
 
 /**
