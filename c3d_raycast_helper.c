@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 13:29:30 by djedasch          #+#    #+#             */
-/*   Updated: 2022/07/15 15:51:23 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/15 17:55:11 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,13 @@ void	c3d_find_wall(t_rays *ray, t_data *cub)
  * 
  * @param ray 
  */
-void	c3d_choose_tex(t_rays *ray)
+void	c3d_choose_tex(t_rays *ray, t_data *cub)
 {
 	if (ray->wallside == 0)
 	{
 		ray->dist = (ray->side.x - ray->delta.x);
 		ray->wallx = ray->pos.y + ray->dist * ray->dir.y;
+		ray->wallx = ray->wallx + cub->player.pos.y;
 		if (ray->dir.x < 0)
 			ray->tex_idx = E;
 		else
@@ -110,6 +111,7 @@ void	c3d_choose_tex(t_rays *ray)
 	{
 		ray->dist = (ray->side.y - ray->delta.y);
 		ray->wallx = ray->pos.x + ray->dist * ray->dir.x;
+		ray->wallx = ray->wallx + cub->player.pos.x;
 		if (ray->dir.y < 0)
 			ray->tex_idx = N;
 		else

@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:50:01 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/15 15:51:46 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/15 17:55:21 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	c3d_raycast(t_data *cub)
 		c3d_init_ray(&ray, cub, i);
 		c3d_calc_steps(&ray, cub);
 		c3d_find_wall(&ray, cub);
-		c3d_choose_tex(&ray);
+		c3d_choose_tex(&ray, cub);
 		if (ray.hit == 2)
 			ray.tex_idx = S + ray.hit;
 		ray.wallx -= (int)ray.wallx;
@@ -53,7 +53,7 @@ void	c3d_raycast(t_data *cub)
 			|| (ray.wallside == 1 && ray.dir.y < 0))
 			ray.tex_x = ray.tex_size - ray.tex_x - 1;
 		ray.wallh = c3d_calc_wallheight(cub, ray.dist);
-		ray.tex_step = (double)ray.tex_size / ray.wallh;
+		ray.tex_step = (double)(ray.tex_size / ray.wallh);
 		c3d_draw_col(cub, i, ray.wallh, ray);
 		i++;
 	}

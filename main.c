@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:32 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/15 15:25:44 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/15 16:58:19 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int ac, char **av)
 	c3d_init_win(cub);
 	c3d_draw_bg(cub);
 	c3d_raycast(cub);
-	mlx_put_image_to_window(cub->mlx.mlx, cub->mlx.win, 
+	mlx_put_image_to_window(cub->mlx.mlx, cub->mlx.win, \
 		cub->images[TEX - 2].img, 0, 0);
 	c3d_init_minimap(cub);
 	mlx_key_hook(cub->mlx.win, c3d_input, cub);

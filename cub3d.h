@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/15 14:57:27 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/15 17:52:21 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,7 +232,7 @@ void	c3d_raycast(t_data *cub);
 void	c3d_calc_steps(t_rays *ray, t_data *cub);
 void	c3d_init_ray(t_rays *ray, t_data *cub, int i);
 void	c3d_find_wall(t_rays *ray, t_data *cub);
-void	c3d_choose_tex(t_rays *ray);
+void	c3d_choose_tex(t_rays *ray, t_data *cub);
 
 /**********************/
 /*** INPUT CHECKING ***/

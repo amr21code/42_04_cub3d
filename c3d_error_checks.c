@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_error_checks.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:35:11 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/15 12:24:30 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/07/15 16:29:58 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ char	*c3d_check_map2(t_maperr *check, int fd, int start, char *line)
 		line = rd;
 		rd = get_next_line(fd);
 	}
+	c3d_single_desctruct(line);
 	return (rd);
 }
 
