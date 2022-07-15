@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:50:01 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/15 14:37:06 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/15 15:51:46 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	c3d_raycast(t_data *cub)
 		c3d_find_wall(&ray, cub);
 		c3d_choose_tex(&ray);
 		if (ray.hit == 2)
-			ray.tex_idx = D;
+			ray.tex_idx = S + ray.hit;
 		ray.wallx -= (int)ray.wallx;
 		ray.tex_x = (int)(ray.wallx * (double)ray.tex_size);
 		if ((ray.wallside == 0 && ray.dir.x > 0)

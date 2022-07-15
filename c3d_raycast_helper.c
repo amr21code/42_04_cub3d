@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_raycast_helper.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 13:29:30 by djedasch          #+#    #+#             */
-/*   Updated: 2022/07/15 14:12:37 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/07/15 15:51:23 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
