@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:11:05 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/07 15:38:12 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/15 11:41:55 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	c3d_init_preerr(t_preerr *check)
 		check->ea = 0;
 		check->so = 0;
 		check->we = 0;
-		check->door = 0;
+		check->door_o = 0;
+		check->door_c = 0;
 		check->f = 0;
 		check->c = 0;
 		check->invalid = 0;

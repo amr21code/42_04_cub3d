@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:09:06 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/10 17:45:39 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/15 11:42:30 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ void	c3d_count_config_elem(t_preerr *check, char *found)
 	else if (!ft_strncmp(found, "WE ", 3))
 		check->we++;
 	else if (!ft_strncmp(found, "DO ", 3))
-		check->door++;
+		check->door_o++;
+	else if (!ft_strncmp(found, "DC ", 3))
+		check->door_c++;
 	else if (!ft_strncmp(found, "F ", 2))
 		check->f++;
 	else if (!ft_strncmp(found, "C ", 2))
@@ -53,7 +55,9 @@ void	c3d_errors_config_elem(t_preerr check)
 		check.invalid = 1;
 	else if (check.we != 1)
 		check.invalid = 1;
-	else if (check.door != 1)
+	else if (check.door_o != 1)
+		check.invalid = 1;
+	else if (check.door_c != 1)
 		check.invalid = 1;
 	else if (check.f != 1)
 		check.invalid = 1;

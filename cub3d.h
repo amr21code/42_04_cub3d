@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/10 17:08:28 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/15 11:41:34 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,8 @@ typedef struct s_preerr
 	int		so;
 	int		ea;
 	int		we;
-	int		door;
+	int		door_o;
+	int		door_c;
 	int		c;
 	int		f;
 	int		invalid;
