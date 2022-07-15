@@ -6,7 +6,7 @@
 /*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/15 12:25:05 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/07/15 13:42:02 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,6 +226,12 @@ void	c3d_init_minimap(t_data *cub);
 /* c3d_raycast.c */
 double	c3d_calc_wallheight(t_data *cub, double len_ray);
 void	c3d_raycast(t_data *cub);
+
+/* c3d_raycast_helper.c */
+void	c3d_calc_steps(t_rays *ray, t_data *cub);
+void	c3d_init_ray(t_rays *ray, t_data *cub, int i);
+void	c3d_find_wall(t_rays *ray, t_data *cub);
+void	c3d_choose_tex(t_rays *ray);
 
 /**********************/
 /*** INPUT CHECKING ***/

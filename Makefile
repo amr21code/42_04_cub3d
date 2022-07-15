@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+         #
+#    By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/20 15:14:15 by anruland          #+#    #+#              #
-#    Updated: 2022/07/10 17:42:34 by anruland         ###   ########.fr        #
+#    Updated: 2022/07/15 13:34:22 by djedasch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,9 +33,10 @@ SRC		=	main.c \
 			c3d_draw_minimap.c \
 			c3d_math.c \
 			c3d_raycast.c \
+			c3d_raycast_helper.c \
 			c3d_draw.c \
 			c3d_input.c \
-			c3d_move.c
+			c3d_move.c 
 
 
 # Mac or Linux?
