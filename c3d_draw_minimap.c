@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 12:31:30 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/07 16:06:05 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/15 14:47:39 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	c3d_draw_map(t_data *cub)
 			{
 				c3d_draw_minimap_dot(cub, i * 4, j * 4, 0xFFAAAAAA);
 			}
-			else if (cub->map.map[i][j] == 'P')
+			else if (cub->map.map[i][j] == 'P' || cub->map.map[i][j] == 'b')
 			{
 				c3d_draw_minimap_dot(cub, i * 4, j * 4, 0xFFFF0000);
 			}
