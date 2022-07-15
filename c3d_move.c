@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 17:03:23 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/10 17:04:42 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/15 10:48:31 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,23 @@ void	c3d_minimap_move(t_data *cub, double x, double y)
 {
 	int	prev_x;
 	int	prev_y;
+	int	next_x;
+	int	next_y;
 
 	prev_x = (int)cub->player.pos.x;
 	prev_y = (int)cub->player.pos.y;
-	cub->map.map[prev_y][prev_x] = '0';
-	cub->map.map[(int)(cub->player.pos.y + y)] \
-		[(int)(cub->player.pos.x + x)] = 'P';
+	next_x = (int)(cub->player.pos.x + x);
+	next_y = (int)(cub->player.pos.y + y);
+	if (cub->map.map[prev_y][prev_x] == 'd' \
+		|| cub->map.map[prev_y][prev_x] == 'b')
+		cub->map.map[prev_y][prev_x] = 'd';
+	else
+		cub->map.map[prev_y][prev_x] = '0';
+	if (cub->map.map[next_y][next_x] == 'd' \
+		|| cub->map.map[next_y][next_x] == 'b')
+		cub->map.map[next_y][next_x] = 'b';
+	else
+		cub->map.map[next_y][next_x] = 'P';
 	c3d_draw_map(cub);
 }
 
