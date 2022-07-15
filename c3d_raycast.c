@@ -6,7 +6,7 @@
 /*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:50:01 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/15 13:43:07 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/07/15 14:12:52 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	c3d_init_rays(t_rays *ray, t_data *cub)
 }
 
 /**
- * @brief 
+ * @brief raycast algorithm
  * 
  * @param cub 
  */
@@ -42,6 +42,7 @@ void	c3d_raycast(t_data *cub)
 	while (i < cub->mlx.width)
 	{
 		c3d_init_ray(&ray, cub, i);
+		c3d_calc_steps(&ray, cub);
 		c3d_find_wall(&ray, cub);
 		c3d_choose_tex(&ray);
 		if (ray.hit == 2)

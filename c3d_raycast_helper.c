@@ -6,7 +6,7 @@
 /*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 13:29:30 by djedasch          #+#    #+#             */
-/*   Updated: 2022/07/15 13:45:00 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/07/15 14:12:37 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	c3d_init_ray(t_rays *ray, t_data *cub, int i)
 	ray->dir.y = cub->player.view.y + ray->cplane.y * ray->cam;
 	ray->delta.x = c3d_abs(c3d_div(1.0, ray->dir.x));
 	ray->delta.y = c3d_abs(c3d_div(1.0, ray->dir.y));
-	c3d_calc_steps(ray, cub);
 }
 
 /**
