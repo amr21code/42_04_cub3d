@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_init_config.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 10:59:10 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/04 14:08:56 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/07/15 14:53:25 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	c3d_init_config_elem(t_data *cub, char *rd)
 	len = 0;
 	tmp = NULL;
 	tmp = skip_whitespaces(rd);
-	if (ft_char_in_str("NSWED", *tmp))
+	if (ft_char_in_str("NSWEDO", *tmp))
 		c3d_init_save_tex_path(cub, tmp);
 	else if (ft_char_in_str("FC", *tmp))
 		c3d_init_save_colors(cub, tmp);

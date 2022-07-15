@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 17:07:02 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/10 17:41:41 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/15 15:02:38 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	c3d_check_config_elem_details(char *rd, t_preerr *check)
 		return ;
 	if (rd[i + 1] && rd[i + 1] == ' ')
 		check->invalid = c3d_check_colors(rd, check, ++i);
-	else if (ft_char_in_str("NSEWD", rd[i]))
+	else if (ft_char_in_str("NSEWDO", rd[i]))
 	{
 		i += 2;
 		tmp = ft_strtrim(&rd[i], " \n");
@@ -82,7 +82,7 @@ int	c3d_check_config_elem_line(char *rd, t_preerr *check)
 		while (*rd)
 		{
 			tmp = skip_whitespaces(rd);
-			if (ft_char_in_str("NSWEDFC", *tmp))
+			if (ft_char_in_str("NSWEDOFC", *tmp))
 			{
 				c3d_count_config_elem(check, tmp);
 				c3d_check_config_elem_details(tmp, check);

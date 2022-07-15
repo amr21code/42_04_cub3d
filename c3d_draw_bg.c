@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/27 12:24:01 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/10 17:05:22 by anruland         ###   ########.fr       */
+/*   Created: Invalid date        by anruland          #+#    #+#             */
+/*   Updated: 2022/07/15 15:25:30 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	c3d_draw_square(t_data *cub)
 		j = 0;
 		while (j < cub->mlx.width)
 		{
-			c3d_draw_px(&cub->images[5], j, i, cub->color_ceilling);
+			c3d_draw_px(&cub->images[TEX - 2], j, i, cub->color_ceilling);
 			j++;
 		}
 		i++;
@@ -39,7 +39,7 @@ void	c3d_draw_square(t_data *cub)
 		j = 0;
 		while (j < cub->mlx.width)
 		{
-			c3d_draw_px(&cub->images[5], j, i, cub->color_floor);
+			c3d_draw_px(&cub->images[TEX - 2], j, i, cub->color_floor);
 			j++;
 		}
 		i++;
@@ -53,9 +53,12 @@ void	c3d_draw_square(t_data *cub)
  */
 void	c3d_draw_bg(t_data *cub)
 {
-	cub->images[5].img = mlx_new_image(cub->mlx.mlx, \
+	int	i;
+
+	i = TEX - 2;
+	cub->images[i].img = mlx_new_image(cub->mlx.mlx, \
 		cub->mlx.width, cub->mlx.height);
-	cub->images[5].data = mlx_get_data_addr(cub->images[5].img, \
-		&cub->images[5].bpp, &cub->images[5].size_x, &cub->images[5].endian);
+	cub->images[i].data = mlx_get_data_addr(cub->images[i].img, \
+		&cub->images[i].bpp, &cub->images[i].size_x, &cub->images[i].endian);
 	c3d_draw_square(cub);
 }

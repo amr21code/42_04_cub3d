@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/15 13:42:02 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/07/15 14:57:27 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <math.h>
 
-# define TEX 7
+# define TEX 8
 
 # ifdef __linux__
 // Linux
@@ -56,7 +56,8 @@ enum e_tex
 	E,
 	S,
 	W,
-	D
+	D,
+	O
 };
 
 typedef struct s_color

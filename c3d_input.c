@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 17:49:15 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/10 17:04:45 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/15 15:21:41 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int	c3d_input(int keycode, t_data *cub)
 	c3d_draw_square(cub);
 	c3d_raycast(cub);
 	mlx_put_image_to_window(cub->mlx.mlx, cub->mlx.win, \
-		cub->images[5].img, 0, 0);
+		cub->images[TEX - 2].img, 0, 0);
 	mlx_put_image_to_window(cub->mlx.mlx, cub->mlx.win, \
-		cub->images[6].img, 0, 0);
+		cub->images[TEX - 1].img, 0, 0);
 	return (0);
 }
 

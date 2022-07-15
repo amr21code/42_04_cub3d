@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:09:06 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/15 11:42:30 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/15 15:03:15 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	c3d_count_config_elem(t_preerr *check, char *found)
 		check->so++;
 	else if (!ft_strncmp(found, "WE ", 3))
 		check->we++;
-	else if (!ft_strncmp(found, "DO ", 3))
+	else if (!ft_strncmp(found, "OD ", 3))
 		check->door_o++;
 	else if (!ft_strncmp(found, "DC ", 3))
 		check->door_c++;

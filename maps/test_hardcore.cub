@@ -2,11 +2,11 @@ NO          ./textures/wall_n.xpm
 SO ./textures/wall_s.xpm
                  WE ./textures/wall_w.xpm
 EA                       ./textures/wall_e.xpm
-
-
-
-DO ./textures/door_open.xpm
 DC ./textures/door_closed.xpm
+OD ./textures/door_open.xpm
+
+
+
 F 140,140 ,140
 
 

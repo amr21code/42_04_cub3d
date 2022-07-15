@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:00:54 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/04 18:41:58 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/15 15:05:47 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	c3d_init_save_tex_path(t_data *cub, char *elem)
 	int		i;
 
 	i = 0;
-	tex_idx = "NESWD";
-	while (i < 5)
+	tex_idx = "NESWDO";
+	while (i < TEX - 2)
 	{
 		if (*elem == tex_idx[i])
 		{

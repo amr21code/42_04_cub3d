@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:40:45 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/15 11:48:15 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/15 15:27:25 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,26 +53,7 @@ void	c3d_draw_col(t_data *cub, int x, int height, t_rays ray)
 			+ ray.tex_x * (cub->images[ray.tex_idx].bpp / 8);
 		color = *(unsigned int *)(cub->images[ray.tex_idx].data + offset);
 		if (i >= 0 && i < cub->mlx.height)
-			c3d_draw_px(&cub->images[5], x, i, color);
+			c3d_draw_px(&cub->images[TEX - 2], x, i, color);
 		i++;
 	}
 }
-
-// /**
-//  * @brief draws one colomn
-//  * 
-//  * @param cub 
-//  * @param x 
-//  * @param height 
-//  */
-// void	c3d_draw_col(t_data *cub, int x, int height, t_rays ray)
-// {
-// 	int	i;
-
-// 	i = cub->mlx.height / 2 - height / 2;
-// 	while (i < cub->mlx.height / 2 + height / 2)
-// 	{
-// 		c3d_draw_px(&cub->images[5], x, i, 0xFF);
-// 		i++;
-// 	}
-// }
