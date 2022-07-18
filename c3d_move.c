@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_move.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djedasch <djedasch@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 17:03:23 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/16 12:47:30 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/07/18 14:41:14 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,38 +60,51 @@ void	c3d_move(t_data *cub, double x, double y)
 // 	cub->player.view.y = prev * deg;
 // }
 
+//void	c3d_turn(t_data *cub, double deg)
+//{
+//	double	prev;
+
+//	prev = cub->player.view.x;
+//	if (prev == 0 || c3d_abs(prev) == 1)
+//	{
+//		if (prev != 0)
+//		{
+//			cub->player.view.x =  (0.7 * prev);
+//			cub->player.view.y = prev * deg * (0.7);
+//		}
+//		else
+//		{
+//			cub->player.view.x = cub->player.view.y * -1 * deg * (0.7);
+//			cub->player.view.y = 0.7 * cub->player.view.y;
+//		}
+//	}
+//	else
+//	{
+//		if (deg * cub->player.view.y * prev > 0)
+//		{
+//			cub->player.view.x = 0;
+//			cub->player.view.y = (prev / 0.7) * deg;
+//		}
+//		else
+//		{
+//			cub->player.view.x = (cub->player.view.y / 0.7) * -1 * deg;
+//			cub->player.view.y = 0;
+//		}
+//	}
+//}
+
 void	c3d_turn(t_data *cub, double deg)
 {
 	double	prev;
+	double	rad;
 
 	prev = cub->player.view.x;
-	if (prev == 0 || c3d_abs(prev) == 1)
-	{
-		if (prev != 0)
-		{
-			cub->player.view.x =  (0.7 * prev);
-			cub->player.view.y = prev * deg * (0.7);
-		}
-		else
-		{
-			cub->player.view.x = cub->player.view.y * -1 * deg * (0.7);
-			cub->player.view.y = 0.7 * cub->player.view.y;
-		}
-	}
-	else
-	{
-		if (deg * cub->player.view.y * prev > 0)
-		{
-			cub->player.view.x = 0;
-			cub->player.view.y = (prev / 0.7) * deg;
-		}
-		else
-		{
-			cub->player.view.x = (cub->player.view.y / 0.7) * -1 * deg;
-			cub->player.view.y = 0;
-		}
-	}
+	rad = c3d_deg_to_rad(deg);
+	cub->player.view.x = prev * cos(rad) - cub->player.view.y * sin(rad);
+	cub->player.view.y = prev * sin(rad) + cub->player.view.y * cos(rad);
 }
+
+
 
 int	c3d_check_move(t_data *cub, double x, double y)
 {

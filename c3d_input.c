@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_input.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 17:49:15 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/15 15:21:41 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/18 14:40:29 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	c3d_input(int keycode, t_data *cub)
 	else if (keycode == KEY_D)
 		c3d_move(cub, cub->player.view.y * -1, cub->player.view.x);
 	else if (keycode == KEY_ARR_LEFT)
-		c3d_turn(cub, 1);
+		c3d_turn(cub, 10);
 	else if (keycode == KEY_ARR_RIGHT)
-		c3d_turn(cub, -1);
+		c3d_turn(cub, -10);
 	else if (keycode == SPACE)
 		c3d_open_door(cub);
 	c3d_draw_square(cub);

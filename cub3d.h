@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/15 17:52:21 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/18 14:41:09 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,5 +290,6 @@ void	c3d_free_array(char **argv);
 /* c3d_math.c */
 double	c3d_abs(double nbr);
 double	c3d_div(double num, double denom);
+double	c3d_deg_to_rad(int deg);
 
 #endif
