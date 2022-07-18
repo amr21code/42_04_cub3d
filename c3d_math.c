@@ -6,7 +6,7 @@
 /*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:07:08 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/18 14:41:19 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/07/18 14:42:08 by djedasch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ double	c3d_div(double num, double denom)
 	return (num / denom);
 }
 
-double c3d_deg_to_rad(int deg)
+double	c3d_deg_to_rad(int deg)
 {
-	double rad;
+	double	rad;
 
 	rad = 1.0 * deg * 3.1415 / 180;
 }
