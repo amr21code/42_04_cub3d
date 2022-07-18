@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:09:06 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/15 15:03:15 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/18 18:00:41 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	c3d_count_config_elem(t_preerr *check, char *found)
 		check->so++;
 	else if (!ft_strncmp(found, "WE ", 3))
 		check->we++;
-	else if (!ft_strncmp(found, "OD ", 3))
-		check->door_o++;
 	else if (!ft_strncmp(found, "DC ", 3))
 		check->door_c++;
 	else if (!ft_strncmp(found, "F ", 2))
@@ -40,6 +38,32 @@ void	c3d_count_config_elem(t_preerr *check, char *found)
 		check->invalid = 1;
 }
 
+void	c3d_print_errors(int errno)
+{
+	if (errno == 2)
+		ft_printerror("Error\nWrong amount of north texture");
+	else if (errno == 3)
+		ft_printerror("Error\nWrong amount of east texture");
+	else if (errno == 4)
+		ft_printerror("Error\nWrong amount of south texture");
+	else if (errno == 5)
+		ft_printerror("Error\nWrong amount of west texture");
+	else if (errno == 6)
+		ft_printerror("Error\nWrong amount of door texture");
+	else if (errno == 7)
+		ft_printerror("Error\nWrong amount of floor color");
+	else if (errno == 8)
+		ft_printerror("Error\nWrong amount of ceilling color");
+	else if (errno == 9)
+		ft_printerror("Error\nWrong characters in color");
+	else if (errno == 10)
+		ft_printerror("Error\nWrong range of color");
+	else if (errno == 11)
+		ft_printerror("Error\nCan't open texture file");
+	else
+		ft_printerror("Error\nWrong config elements");
+}
+
 /**
  * @brief prints error if invalid config elements 
  * 
@@ -47,24 +71,24 @@ void	c3d_count_config_elem(t_preerr *check, char *found)
  */
 void	c3d_errors_config_elem(t_preerr check)
 {
-	if (check.no != 1)
-		check.invalid = 1;
-	else if (check.ea != 1)
-		check.invalid = 1;
-	else if (check.so != 1)
-		check.invalid = 1;
-	else if (check.we != 1)
-		check.invalid = 1;
-	else if (check.door_o != 1)
-		check.invalid = 1;
-	else if (check.door_c != 1)
-		check.invalid = 1;
-	else if (check.f != 1)
-		check.invalid = 1;
-	else if (check.c != 1)
-		check.invalid = 1;
 	if (check.invalid != 0)
-		ft_printerror("Error\nInvalid config elements");
+		c3d_print_errors(check.invalid);
+	if (check.no != 1)
+		check.invalid = 2;
+	else if (check.ea != 1)
+		check.invalid = 3;
+	else if (check.so != 1)
+		check.invalid = 4;
+	else if (check.we != 1)
+		check.invalid = 5;
+	else if (check.door_c != 1)
+		check.invalid = 6;
+	else if (check.f != 1)
+		check.invalid = 7;
+	else if (check.c != 1)
+		check.invalid = 8;
+	if (check.invalid != 0)
+		c3d_print_errors(check.invalid);
 }
 
 /**

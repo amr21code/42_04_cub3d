@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_math.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:07:08 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/18 14:42:08 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/07/18 16:54:44 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,5 @@ double	c3d_deg_to_rad(int deg)
 	double	rad;
 
 	rad = 1.0 * deg * 3.1415 / 180;
+	return (rad);
 }

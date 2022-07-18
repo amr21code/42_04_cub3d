@@ -3,15 +3,14 @@ SO ./textures/wall_s.xpm
                  WE ./textures/wall_w.xpm
 EA                       ./textures/wall_e.xpm
 DC ./textures/door_closed.xpm
-OD ./textures/door_open.xpm
 
 
 
 F 140,140 ,140
-
-
-
 C 55    ,       198   ,  255
+
+
+
                                   111111
        111111                     100001
        100001                     100001111111111

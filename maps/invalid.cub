@@ -1,0 +1,16 @@
+NO ./textures/wall_n.xpm
+SO ./textures/wall_s.xpm
+WE ./textures/   wall_w.xpm
+EA ./textures/wall_e.xpm
+DC ./textures/door_closed.xpm
+
+F 14    0,22,   25555
+
+C 55,198,        2s14
+
+1111
+1W001
+1111
+
+
+000000

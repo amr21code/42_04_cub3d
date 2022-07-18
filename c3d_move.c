@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c3d_move.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 17:03:23 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/18 14:41:14 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/07/18 17:55:28 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,31 @@ void	c3d_move(t_data *cub, double x, double y)
 	}
 }
 
+void	c3d_turn(t_data *cub, double deg)
+{
+	double	prev;
+	double	rad;
+
+	prev = cub->player.view.x;
+	rad = c3d_deg_to_rad(deg);
+	cub->player.view.x = prev * cos(rad) - cub->player.view.y * sin(rad);
+	cub->player.view.y = prev * sin(rad) + cub->player.view.y * cos(rad);
+}
+
+int	c3d_check_move(t_data *cub, double x, double y)
+{
+	if (cub->map.map[(int)(cub->player.pos.y + y)] \
+		[(int)(cub->player.pos.x + x)] == '1')
+		return (0);
+	else if (cub->map.map[(int)(cub->player.pos.y + y)] \
+		[(int)(cub->player.pos.x + x)] == 'D')
+		return (2);
+	else if (cub->map.map[(int)(cub->player.pos.y + y)] \
+		[(int)(cub->player.pos.x + x)] == 'd')
+		return (3);
+	return (1);
+}
+
 // void	c3d_turn(t_data *cub, double deg)
 // {
 // 	double	prev;
@@ -92,30 +117,3 @@ void	c3d_move(t_data *cub, double x, double y)
 //		}
 //	}
 //}
-
-void	c3d_turn(t_data *cub, double deg)
-{
-	double	prev;
-	double	rad;
-
-	prev = cub->player.view.x;
-	rad = c3d_deg_to_rad(deg);
-	cub->player.view.x = prev * cos(rad) - cub->player.view.y * sin(rad);
-	cub->player.view.y = prev * sin(rad) + cub->player.view.y * cos(rad);
-}
-
-
-
-int	c3d_check_move(t_data *cub, double x, double y)
-{
-	if (cub->map.map[(int)(cub->player.pos.y + y)] \
-		[(int)(cub->player.pos.x + x)] == '1')
-		return (0);
-	else if (cub->map.map[(int)(cub->player.pos.y + y)] \
-		[(int)(cub->player.pos.x + x)] == 'D')
-		return (2);
-	else if (cub->map.map[(int)(cub->player.pos.y + y)] \
-		[(int)(cub->player.pos.x + x)] == 'd')
-		return (3);
-	return (1);
-}

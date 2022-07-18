@@ -6,7 +6,7 @@
 /*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 17:07:02 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/15 15:02:38 by anruland         ###   ########.fr       */
+/*   Updated: 2022/07/18 18:01:06 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int	c3d_check_colors(char *rd, t_preerr *check, int i)
 	if (!(c3d_check_rgb_range(check->r)
 			&& c3d_check_rgb_range(check->g)
 			&& c3d_check_rgb_range(check->b)))
-		return (1);
+		return (10);
+	if (check->invalid)
+		return (9);
 	return (0);
 }
 
@@ -50,7 +52,7 @@ void	c3d_check_config_elem_details(char *rd, t_preerr *check)
 		return ;
 	if (rd[i + 1] && rd[i + 1] == ' ')
 		check->invalid = c3d_check_colors(rd, check, ++i);
-	else if (ft_char_in_str("NSEWDO", rd[i]))
+	else if (ft_char_in_str("NSEWD", rd[i]))
 	{
 		i += 2;
 		tmp = ft_strtrim(&rd[i], " \n");
@@ -59,7 +61,7 @@ void	c3d_check_config_elem_details(char *rd, t_preerr *check)
 		if (fd > -1)
 			close(fd);
 		else
-			check->invalid = 1;
+			check->invalid = 11;
 	}
 	else
 		check->invalid = 1;
@@ -82,7 +84,7 @@ int	c3d_check_config_elem_line(char *rd, t_preerr *check)
 		while (*rd)
 		{
 			tmp = skip_whitespaces(rd);
-			if (ft_char_in_str("NSWEDOFC", *tmp))
+			if (ft_char_in_str("NSWEDFC", *tmp))
 			{
 				c3d_count_config_elem(check, tmp);
 				c3d_check_config_elem_details(tmp, check);
@@ -115,9 +117,12 @@ void	c3d_pre_error_check(int ac, char **av)
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printerror("Error\nFile not found");
+		ft_printerror("Error\nCan't open map file");
 	}
 	if (!ft_strnstr(av[1], ".cub", ft_strlen(av[1])))
+	{
+		close(fd);
 		ft_printerror("Error\nNot a .cub map");
+	}
 	close(fd);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djedasch <djedasch@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: anruland <anruland@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:21:43 by anruland          #+#    #+#             */
-/*   Updated: 2022/07/18 14:41:09 by djedasch         ###   ########.fr       */
+/*   Updated: 2022/07/18 17:53:26 by anruland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@
 # include <stdlib.h>
 # include <math.h>
 
-# define TEX 8
+# define TEX 7
 
-# ifdef __linux__
 // Linux
 enum e_keys
 {
@@ -35,20 +34,6 @@ enum e_keys
 	KEY_ESCAPE = 65307,
 	SPACE = 32
 };
-# else
-// Mac
-enum e_keys
-{
-	KEY_A = 0,
-	KEY_S = 1,
-	KEY_D = 2,
-	KEY_W = 13,
-	KEY_ARR_LEFT = 123,
-	KEY_ARR_RIGHT = 124,
-	KEY_ESCAPE = 53,
-	SPACE = 49
-};
-# endif
 
 enum e_tex
 {
@@ -132,7 +117,6 @@ typedef struct s_preerr
 	int		so;
 	int		ea;
 	int		we;
-	int		door_o;
 	int		door_c;
 	int		c;
 	int		f;

@@ -5,7 +5,7 @@ EA                       ./textures/wall_e.xpm
 
 
 
-DO ./textures/door.xpm
+DC ./textures/door_closed.xpm
 F               140       ,        140 ,    140
 
 
